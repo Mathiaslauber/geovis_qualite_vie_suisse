@@ -23,6 +23,44 @@ var svg = d3.select("#carto-1")
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
+/*// Features of the annotation
+const annotations = [{
+    note: {
+        label: "Part des pendula",
+        title: "Annotation title"
+    },
+    x: 475,
+    y: 475,
+    dy: 480,
+    dx: 480
+}]
+
+// Add annotation to the chart
+const makeAnnotations = d3.annotation()
+    .annotations(annotations)
+d3.select("#carto-1")
+    .append("g")
+    .call(makeAnnotations)
+
+*/
+svg.append("text")
+    .attr("x", (width / 2))
+    .attr("y", 15 - (margin.top / 2))
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("text-decoration", "bold")
+    .text("[%] de motorisation des pendulaires");
+
+svg.append("text")
+    .attr("x", (width / 2))
+    .attr("y", 450)
+    .attr("text-anchor", "middle")
+    .style("font-size", "8px")
+    .style("text-decoration", "italic")
+    .text("* Part des pendulaires utilisant un moyen de transport individuel motorisé (en %)");
+//Part des pendulaires utilisant un moyen de transport individuel motoris� (en %)
+
+
 
 // Ajout de l'interactivité 
 /*const annees = [2014, 2015, 2016, 2017, 2018];
