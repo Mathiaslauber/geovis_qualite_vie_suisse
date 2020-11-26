@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>000000000000</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <div id="carto-1" class="carto-1">
+            <select id="selectButton_ratio"></select>
+        </div>
+
+        <div class="footer"></div>
+        <div class="tableau1"></div>
+        <div class="graph1"></div>
+        <div class="graph2-"></div>
+        <div class="carto-2"></div>
+        <div class="titre"></div>
+        <div class="descriptif1"></div>
+        <div class="descriptif2"></div>
+    </div>
+
+    >
+    <h1 class="titre1"></h1>
+
+    <div class="mat">
+        <h2 class="titre2"></h2>
+        <h2 class="titre3"></h2>
+    </div>
+
+    <div class="graph" id="graph">
+    </div>
+
+    <!-- chargement d3.js
+    de topojson pour gérer la couche suisse 
+    et de l'échelle de couleur -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <!--Chargement de Classybrew pour la mise en classe avec la méthode jenks-->
+    <script src="https://cdn.rawgit.com/christiankaiser/classybrew/b8ca77d5a6b7eef5586f5148c36ee937aa1bacfb/build/classybrew.min.js"></script>
+
+    <!-- Lien vers le script -->
+    <script src="main.js"></script>
+    <script src="clev_dot_plot.js"></script>
+
+    <!-- Run the script once everything is loaded -->
+    <script>
+        (function() {
+            main();
+        })();
+    </script>
+</body>
+
+</html>
