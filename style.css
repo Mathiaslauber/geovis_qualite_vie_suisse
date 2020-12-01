@@ -3,14 +3,10 @@ html,
 body,
 .grid-container {
     display: grid;
-    grid-template-columns: 300px 323.6px 20px 700px;
-    grid-template-rows: 75px 75px 350px 790px 25px;
+    grid-template-columns: 300px 323.6px 24px 646px;
+    grid-template-rows: 75px 75px 350px 680px 25px;
     gap: 0.5% 0.5%;
-    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "tableau1 tableau1 . carto2" "footer footer footer footer";
-}
-
-.tableau1 {
-    grid-area: tableau1;
+    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
 
 .graph1 {
@@ -25,51 +21,70 @@ body,
     grid-area: descriptif1;
 }
 
+.carto1 {
+    grid-area: carto1;
+}
+
+.descriptif2 {
+    grid-area: descriptif2;
+}
+
+.Titre {
+    grid-area: Titre;
+}
+
+.footer {
+    grid-area: footer;
+}
+
 .carto2 {
     grid-area: carto2;
+}
+
+#mapdiv {
+    position: absolute;
+    z-index: 1;
+    top: 15px;
+    left: 5px;
+    width: 750px;
+    height: 650px;
+    background-color: #696969;
+    border: 3px solid #FFFFFF;
 }
 
 div.tooltip_map {
     position: absolute;
     z-index: 2;
     text-align: left;
+    top: 40px;
+    left: 5px;
     width: 400px;
     height: 90px;
     padding: 2px;
     font: 12px sans-serif;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(5, 255, 5, 0.24);
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
-}
-
-#mapdiv {
-    position: absolute;
-    z-index: 1;
-    top: 90px;
-    left: 5px;
-    width: 750px;
-    height: 650px;
-    background-color: #8cb6b4;
-    border: 3px solid #FFFFFF;
+    visibility: "hidden";
 }
 
 .sidebar {
     position: absolute;
-    top: 90px;
+    top: 15px;
     left: calc(760px);
-    width: 330px;
+    width: 370px;
     height: calc(620px);
     /*min-height: 90%;
     bottom: 10%;*/
-    background-color: #f0f0f0;
-    border: 1px solid rgb(160, 160, 160);
+    background-color: #ca1010;
+    border: 1px solid rgba(160, 160, 160, 0);
     padding: 15px;
 }
 
 td,
 th {
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgba(190, 190, 190, 0.712);
     padding: 9px;
 }
 
@@ -78,11 +93,12 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #eee;
+    background-color: rgba(218, 214, 214, 0.815);
 }
 
 th[scope="col"] {
     background-color: #7fa6b9;
+    /*#7fa6b9*/
     color: #fff;
 }
 
@@ -98,41 +114,15 @@ caption {
 
 table {
     border-collapse: collapse;
-    border: 2px solid rgb(200, 200, 200);
+    border: 2px solid rgba(200, 200, 200, 0);
     letter-spacing: 1px;
     font-family: sans-serif;
     font-size: .8rem;
 }
 
-.carto1 {
-    grid-area: carto1;
-    z-index: 1;
-}
-
-div.tooltip_clev {
-    position: absolute;
-    z-index: 3;
-    text-align: left;
-    width: 300px;
-    height: 40px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: rgba(255, 255, 255, 0);
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-.descriptif2 {
-    grid-area: descriptif2;
-}
-
-.Titre {
-    grid-area: Titre;
-}
-
-.footer {
-    grid-area: footer;
+div.infobox {
+    font: "Comfortaa";
+    font-size: small;
 }
 
 
@@ -201,27 +191,36 @@ div.tooltip_clev {
 /* For presentation only, no need to copy the code below */
 
 .grid-container * {
-    border: 0.25rem solid #79707025;
+    border: 0.25rem solid #bea41400;
     position: relative;
 }
 
+
+/* CE QUI NOMME LES CASES 
 .grid-container *:after {
     content: attr(class);
     position: absolute;
     top: 0;
     left: 0;
 }
+*/
+
+
+/* derrière le tableau mapdiv*/
 
 div:nth-of-type(1) {
-    background: #d1cdcd;
+    background: #ff000000;
 }
 
 div:nth-of-type(2) {
-    background: #689ca3;
+    background: #00e1ff00;
 }
 
+
+/* derrière la légende sidebar*/
+
 div:nth-of-type(3) {
-    background: #238077;
+    background: #00f5dd00;
 }
 
 div:nth-of-type(4) {
@@ -229,7 +228,7 @@ div:nth-of-type(4) {
 }
 
 div:nth-of-type(5) {
-    background: #2d235a;
+    background: #18123000;
 }
 
 div:nth-of-type(6) {
@@ -241,16 +240,16 @@ div:nth-of-type(7) {
 }
 
 div:nth-of-type(8) {
-    background: #69971a;
+    background: #586346;
 }
 
 div:nth-of-type(9) {
-    background: #779c07;
+    background: #32c44b;
 }
 
 body {
     background: #a635c900;
-    color: rgb(131, 58, 58);
+    color: rgb(122, 94, 94);
     font-family: Comfortaa, sans-serif;
     font-weight: 1000;
     letter-spacing: 0.03rem;

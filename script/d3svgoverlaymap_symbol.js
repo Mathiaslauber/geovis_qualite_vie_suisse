@@ -83,10 +83,11 @@ var tooltip = d3.select("#tooltip_map")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip_map")
-    .style("background-color", "#7fa6b9")
+    .style("background-color", "grey")
     .style("border-radius", "5px")
     .style("padding", "10px")
     .style("color", "white")
+
 
 // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
 var showTooltip = function(d) {
