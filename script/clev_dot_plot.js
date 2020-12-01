@@ -11,12 +11,12 @@ Tooltip bug
 [] METTRE LA VALEUR EXACT MIN ET MAX AVANT/ APRES CHAQUE LIGNE 
 */
 // set the dimensions and margins of the graph
-var margin = { top: 40, right: 40, bottom: 75, left: 120 },
-    width = 550 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = { top: 40, right: 40, bottom: 30, left: 160 },
+    width = 600 - margin.left - margin.right,
+    height = 320 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#carto-1")
+var svg = d3.select("#carto1")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -79,7 +79,7 @@ let condColorScale;*/
 
 
 // Parse the Data
-d3.csv("lollipop_chart.csv", function(data) {
+d3.csv("data/lollipop_chart.csv", function(data) {
     sort = data.sort(function(a, b) {
         return b.r2014 - a.r2014;
     });
@@ -96,7 +96,7 @@ d3.csv("lollipop_chart.csv", function(data) {
     // List of groups (here I have one group per column)
     var allGroup = ["r2014", "r2015", "r2016", "r2017", "r2018"]
         // add the options to the button
-    d3.select("#selectButton_ratio")
+    d3.select("#selectButton_cleveland")
         .selectAll('myOptions')
         .data(allGroup)
         .enter()
@@ -135,11 +135,11 @@ d3.csv("lollipop_chart.csv", function(data) {
     //---------------TOOLTIP---------------------//
     // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
     // Its opacity is set to 0: we don't see it by default.
-    var tooltip = d3.select("#my_dataviz")
+    var tooltip = d3.select("#carto1")
         .append("div")
         .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "white")
+        .attr("class", "tooltip_clev")
+        .style("background-color", "#7fa6b9")
         .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "5px")
@@ -157,7 +157,7 @@ d3.csv("lollipop_chart.csv", function(data) {
     var mousemove = function(d) {
         tooltip
             .html(d.villes + " : La distance moyenne entre 2014 et 2018 est de : " + d.dist_moy_14_19 + " [km] " + " La durée est de : " + d.duree_moy_14_18 + " [min]")
-            .style("left", (d3.mouse(this)[0] + 90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            .style("left", (d3.mouse(this)[0] + 150) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
     }
 
@@ -308,7 +308,7 @@ d3.csv("lollipop_chart.csv", function(data) {
 
     }
     // When the button is changed, run the updateChart function
-    d3.select("#selectButton_ratio").on("change", function(d) {
+    d3.select("#selectButton_cleveland").on("change", function(d) {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
             // run the updateChart function with this selected option

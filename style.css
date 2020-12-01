@@ -2,52 +2,200 @@
 html,
 body,
 .grid-container {
-    height: 100%;
-    margin: 0;
-}
-
-.grid-container {
     display: grid;
-    grid-template-columns: 3fr 3fr 0.6fr 4.9fr 0.25fr;
-    grid-template-rows: 0.75fr 1.25fr 3.5fr 3.5fr 0.25fr;
+    grid-template-columns: 300px 323.6px 20px 700px;
+    grid-template-rows: 75px 75px 350px 790px 25px;
     gap: 0.5% 0.5%;
-}
-
-.carto-1 {
-    grid-area: 3 / 4 / 4 / 5;
-}
-
-.footer {
-    grid-area: 5 / 1 / 6 / 5;
+    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "tableau1 tableau1 . carto2" "footer footer footer footer";
 }
 
 .tableau1 {
-    grid-area: 4 / 1 / 5 / 3;
+    grid-area: tableau1;
 }
 
 .graph1 {
-    grid-area: 3 / 1 / 4 / 2;
+    grid-area: graph1;
 }
 
 .graph2- {
-    grid-area: 3 / 2 / 4 / 3;
-}
-
-.carto-2 {
-    grid-area: 4 / 4 / 5 / 5;
-}
-
-.titre {
-    grid-area: 1 / 1 / 2 / 5;
+    grid-area: graph2-;
 }
 
 .descriptif1 {
-    grid-area: 2 / 1 / 3 / 3;
+    grid-area: descriptif1;
+}
+
+.carto2 {
+    grid-area: carto2;
+}
+
+div.tooltip_map {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 400px;
+    height: 90px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+#mapdiv {
+    position: absolute;
+    z-index: 1;
+    top: 90px;
+    left: 5px;
+    width: 750px;
+    height: 650px;
+    background-color: #8cb6b4;
+    border: 3px solid #FFFFFF;
+}
+
+.sidebar {
+    position: absolute;
+    top: 90px;
+    left: calc(760px);
+    width: 330px;
+    height: calc(620px);
+    /*min-height: 90%;
+    bottom: 10%;*/
+    background-color: #f0f0f0;
+    border: 1px solid rgb(160, 160, 160);
+    padding: 15px;
+}
+
+td,
+th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 9px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+th[scope="col"] {
+    background-color: #7fa6b9;
+    color: #fff;
+}
+
+th[scope="row"] {
+    background-color: #cfcfd3;
+    text-align: right;
+}
+
+caption {
+    padding: 5 px;
+    caption-side: bottom;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+}
+
+.carto1 {
+    grid-area: carto1;
+    z-index: 1;
+}
+
+div.tooltip_clev {
+    position: absolute;
+    z-index: 3;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 .descriptif2 {
-    grid-area: 2 / 4 / 3 / 5;
+    grid-area: descriptif2;
 }
+
+.Titre {
+    grid-area: Titre;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+
+/*.grid-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1.1fr .1fr 2fr;
+    grid-template-rows: 0.2fr 0.5fr 1.9fr 2.3fr 0.1fr;
+    gap: 0.5% 0.5%;
+    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "tableau1 tableau1 . carto2" "footer footer footer footer";
+}
+
+.tableau1 {
+    grid-area: tableau1;
+}
+
+.graph1 {
+    grid-area: graph1;
+}
+
+.graph2- {
+    grid-area: graph2-;
+}
+
+.descriptif1 {
+    grid-area: descriptif1;
+}
+
+.carto2 {
+    grid-area: carto2;
+}
+
+.carto1 {
+    grid-area: carto1;
+}
+
+div.tooltip_clev {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.descriptif2 {
+    grid-area: descriptif2;
+}
+
+.Titre {
+    grid-area: Titre;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+
+*/
 
 
 /* For presentation only, no need to copy the code below */
@@ -77,15 +225,15 @@ div:nth-of-type(3) {
 }
 
 div:nth-of-type(4) {
-    background: #318564;
+    background: #31856300;
 }
 
 div:nth-of-type(5) {
-    background: #3f8a52;
+    background: #2d235a;
 }
 
 div:nth-of-type(6) {
-    background: #4d8e3f;
+    background: #3f7c8e00;
 }
 
 div:nth-of-type(7) {
@@ -101,8 +249,8 @@ div:nth-of-type(9) {
 }
 
 body {
-    background: #a635c9;
-    color: #fff;
+    background: #a635c900;
+    color: rgb(131, 58, 58);
     font-family: Comfortaa, sans-serif;
     font-weight: 1000;
     letter-spacing: 0.03rem;

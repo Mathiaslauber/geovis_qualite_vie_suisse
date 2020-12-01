@@ -5,56 +5,121 @@
     <meta charset="utf-8">
     <title>000000000000</title>
     <link rel="stylesheet" href="style.css">
+
+
+
+    <!-- Librairie Leaflet; le JS doit être après le CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="script/L.D3SvgOverlay.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+
+    <!-- Charger les librairies pour ajouter des fonds de carte ESRI vectoriels -->
+    <link rel="stylesheet" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css" />
+    <script src="https://unpkg.com/mapbox-gl/dist/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector/dist/esri-leaflet-vector.js"></script>
+
+
+
 </head>
 
 <body>
     <div class="grid-container">
-        <div id="carto-1" class="carto-1">
-            <select id="selectButton_ratio"></select>
-        </div>
-
-        <div class="footer"></div>
         <div class="tableau1"></div>
         <div class="graph1"></div>
         <div class="graph2-"></div>
-        <div class="carto-2"></div>
-        <div class="titre"></div>
         <div class="descriptif1"></div>
-        <div class="descriptif2"></div>
-    </div>
+        <div class="carto2">
+            <div id="mapdiv" class="carte-interactive"></div>
 
-    >
-    <h1 class="titre1"></h1>
+            <div id="tooltip_map" class="tooltip_map"></div>
+            <style>
+                .bubbles {
+                    stroke-width: 2px;
+                    stroke: rgb(248, 248, 248);
+                    opacity: 1
+                }
+                
+                .bubbles:hover {
+                    stroke: black;
+                }
+            </style>
+            <div id="sidebar" class="sidebar">
 
-    <div class="mat">
-        <h2 class="titre2"></h2>
-        <h2 class="titre3"></h2>
-    </div>
+                <div class="legend">
+                    <p style="margin-bottom: 3px; margin-top: 0; font-size: 20px; text-align: center;
+                 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><b>Comparatif immobilier entre les villes suisses</b></p>
+                    <table>
 
-    <div class="graph" id="graph">
-    </div>
+                        <caption>*Moyenne entre 2014-2019</caption>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">agglomération</th>
+                            <th scope="col">villes</th>
+                        </tr>
 
-    <!-- chargement d3.js
+                        <tr>
+                            <th scope="row"> <i>*taux [%]</i> logements vacants*</th>
+                            <td>1.83</td>
+                            <td>1.79</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i>*Décompte</i> logements</th>
+                            <td>301'247</td>
+                            <td>294'620</td>
+                        </tr>
+
+                    </table>
+
+
+                    <div class="infobox ">
+                        <p><i>Passez sur un symbole pour obtenir le résultat détaillé.</i></p>
+                        <p><i>Zoom avec la souris pour apercevoir les symbôles colorés</i></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="carto1" id="carto1">
+                <select id="selectButton_cleveland"></select>
+                <div class="tooltip_clev" id="tooltip_clev"></div>
+            </div>
+
+            <div class="descriptif2"></div>
+            <div class="Titre"></div>
+            <div class="footer"></div>
+        </div>
+
+
+
+
+        <!-- chargement d3.js
     de topojson pour gérer la couche suisse 
     et de l'échelle de couleur -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://d3js.org/topojson.v2.min.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
-    <!--Chargement de Classybrew pour la mise en classe avec la méthode jenks-->
-    <script src="https://cdn.rawgit.com/christiankaiser/classybrew/b8ca77d5a6b7eef5586f5148c36ee937aa1bacfb/build/classybrew.min.js"></script>
+        <!--Chargement de Classybrew pour la mise en classe avec la méthode jenks-->
+        <script src="https://cdn.rawgit.com/christiankaiser/classybrew/b8ca77d5a6b7eef5586f5148c36ee937aa1bacfb/build/classybrew.min.js"></script>
 
-    <!-- Lien vers le script -->
-    <script src="main.js"></script>
-    <script src="clev_dot_plot.js"></script>
+        <!-- Lien vers le script -->
+        <script src="main.js"></script>
+        <script src="script/clev_dot_plot.js"></script>
+        <script src="script/d3svgoverlaymap_symbol.js "></script>
 
-    <!-- Run the script once everything is loaded -->
-    <script>
-        (function() {
-            main();
-        })();
-    </script>
+        <!-- Run the script once everything is loaded -->
+        <script>
+            (function() {
+                main();
+            })();
+        </script>
 </body>
 
 </html>
