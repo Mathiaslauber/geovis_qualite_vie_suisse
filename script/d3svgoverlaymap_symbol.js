@@ -18,6 +18,7 @@ var div = d3.select("#tooltip").append("div")
     .style("opacity", 0);*/
 
 
+
 var map = L.map("mapdiv", { center: [46.8, 7.95], zoom: 8 });
 map.setMaxBounds([
     [45.989329, 5.656842],
@@ -216,6 +217,7 @@ d3.csv("data.csv", function(d) {
     });*/
 // attention mention de d.pop plus haut 
 // Modifer l'ordre des symboles
+/*VERSION OBSOLETE AVEC D3.js V4
 d3.csv("data/data.csv", function(d) {
     d.log_tot_moy = (d.log_tot_moy == "") ? 0 : +d.log_tot_moy;
     return d;
@@ -229,7 +231,19 @@ d3.csv("data/data.csv", function(d) {
 
 
 })
-citiesOverlay.addTo(map);
+citiesOverlay.addTo(map);*/
+
+// VERSION moins optimisée mais compatible d3.js v4
+d3.csv("data/data.csv", function(data) {
+    cities = data;
+    cities.sort(function(a, b) {
+        var p = parseInt(a.log_tot_moy);
+        var q = parseInt(b.log_tot_moy);
+        return (p > q) ? -1 : ((q > p) ? 1 : 0);
+    });
+    citiesOverlay.addTo(map);
+})
+
 
 
 // set the dimensions and margins of the graph

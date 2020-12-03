@@ -25,6 +25,20 @@ body,
     grid-area: carto1;
 }
 
+div.tooltip_clev {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 .descriptif2 {
     grid-area: descriptif2;
 }
@@ -196,7 +210,8 @@ div.tooltip_clev {
 }
 
 
-/* CE QUI NOMME LES CASES 
+/*CE QUI NOMME LES CASES
+
 .grid-container *:after {
     content: attr(class);
     position: absolute;
