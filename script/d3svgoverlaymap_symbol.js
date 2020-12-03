@@ -19,10 +19,10 @@ var div = d3.select("#tooltip").append("div")
 
 
 
-var map = L.map("mapdiv", { center: [46.8, 7.95], zoom: 8 });
+var map = L.map("mapdiv", { center: [46.6, 7.95], zoom: 8 });
 map.setMaxBounds([
     [45.989329, 5.656842],
-    [47.813155, 10.538028]
+    [47.413155, 10.538028]
 ]);
 map.setMinZoom(8);
 
@@ -252,7 +252,7 @@ var margin = { top: 0, right: 0, bottom: 0, left: 5 },
     height = 650 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#sidebar")
+var svg_chorop = d3.select("#sidebar")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -267,8 +267,8 @@ var margin1 = { top: 90, right: 0, bottom: 0, left: 760 },
     width = 330 - margin1.left - margin1.right,
     height = 620 - margin1.top - margin1.bottom;
 
-var svg = d3.select("#sidebar")
-    .append("svg")
+var svg_chorop = d3.select("#sidebar")
+    .append("svg_chorop")
     .attr("width", width + margin1.left + margin1.right)
     .attr("height", height + margin1.top + margin1.bottom)
     .append("g")
@@ -291,12 +291,12 @@ d3.csv("data/data.csv", function(d) {
     var keys = ["max : 2.7", "1.5", "1.1", "0.7", "0.4"]
         //0.1, 0.4, 0.7, 1.1, 1.5, 2.7
 
-    svg.selectAll("mydots")
+    svg_chorop.selectAll("mydots")
         .data(allgroups)
         .enter()
         .append("rect")
         .attr("x", 0)
-        .attr("y", function(d, i) { return 50 + i * (size + 10) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", function(d, i) { return 60 + i * (size + 10) }) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("width", size)
         .attr("height", size)
         .style("fill", function(d) { return mycolor(d) })
@@ -308,12 +308,12 @@ d3.csv("data/data.csv", function(d) {
 
 
     // Add one dot in the legend for each name.
-    svg.selectAll("mylabels")
+    svg_chorop.selectAll("mylabels")
         .data(keys)
         .enter()
         .append("text")
         .attr("x", 0 + size * 1.2)
-        .attr("y", function(d, i) { return 35 + i * (size + 10) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", function(d, i) { return 50 + i * (size + 10) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", "black")
         .text(function(d) { return d })
         .style("font-size", "16px")
@@ -325,9 +325,9 @@ d3.csv("data/data.csv", function(d) {
         //.on("mouseleave", noHighlight)
 
 
-    svg.append("text").attr("x", 35).attr("y", 240).text("min : 0.1").style("font-size", "12px").attr("alignment-baseline", "middle")
-    svg.append("text").attr("x", 0).attr("y", 15).text("[%] de logements vacants").style("font-size", "19px").attr("alignment-baseline", "middle")
-    svg.append("text").attr("x", 0).attr("y", 35).text("moyenne entre 2014-2019").style("font-size", "14px").attr("alignment-baseline", "middle")
+    svg_chorop.append("text").attr("x", 35).attr("y", 250).text("min : 0.1").style("font-size", "12px").attr("alignment-baseline", "middle")
+    svg_chorop.append("text").attr("x", 0).attr("y", 15).text("[%] de logements vacants").style("font-size", "19px").attr("alignment-baseline", "middle")
+    svg_chorop.append("text").attr("x", 0).attr("y", 35).text("moyenne entre 2014-2019").style("font-size", "14px").attr("alignment-baseline", "middle")
         // ------------------------------------------------------------//
         //      CERCLE TAILLE : LEGENDES NOMBRE DE LOGEMENTS TOTAUX   //
         // ----------------------------------------------------------//
@@ -343,7 +343,7 @@ d3.csv("data/data.csv", function(d) {
     var xCircle = 221
     var xLabel = 291
     var yCircle = 175
-    svg
+    svg_chorop
         .selectAll("legend")
         .data(valuesToShow)
         .enter()
@@ -355,7 +355,7 @@ d3.csv("data/data.csv", function(d) {
         .attr("stroke", "black")
 
     // Add legend: segments
-    svg
+    svg_chorop
         .selectAll("legend")
         .data(valuesToShow)
         .enter()
@@ -368,7 +368,7 @@ d3.csv("data/data.csv", function(d) {
         .style('stroke-dasharray', ('2,2'))
 
     // Add legend: labels
-    svg
+    svg_chorop
         .selectAll("legend")
         .data(valuesToShow)
         .enter()
@@ -380,14 +380,14 @@ d3.csv("data/data.csv", function(d) {
         .attr('alignment-baseline', 'middle')
 
     // Legend title
-    svg.append("text")
+    svg_chorop.append("text")
         .attr('x', xCircle - 50)
         .attr("y", yCircle + 25)
         .text("Nombre de logements")
         .attr("text-anchor", "right")
         .attr("font-size", "17")
 
-    svg.append("text")
+    svg_chorop.append("text")
         .attr('x', xCircle - 50)
         .attr("y", yCircle + 45)
         .text("moyenne entre 2014-2019")

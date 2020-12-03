@@ -17,8 +17,8 @@ var margin = { top: 40, right: 40, bottom: 30, left: 160 },
     width = 600 - margin.left - margin.right,
     height = 320 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#carto1")
+// append the svg_clev object to the body of the page
+var svg_clev = d3.select("#graph2")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -45,7 +45,7 @@ d3.select("#carto-1")
     .call(makeAnnotations)
 
 */
-svg.append("text")
+svg_clev.append("text")
     .attr("x", (width / 2))
     .attr("y", 15 - (margin.top / 2))
     .attr("text-anchor", "middle")
@@ -53,7 +53,7 @@ svg.append("text")
     .style("text-decoration", "bold")
     .text("[%] de motorisation des pendulaires");
 
-svg.append("text")
+svg_clev.append("text")
     .attr("x", (width / 2))
     .attr("y", 450)
     .attr("text-anchor", "middle")
@@ -112,11 +112,11 @@ d3.csv("data/lollipop_chart.csv", function(data) {
     var x = d3.scaleLinear()
         .domain([0, 0.7])
         .range([0, width]);
-    svg.append("g")
+    svg_clev.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).ticks(4))
 
-    svg.append("text")
+    svg_clev.append("text")
         .attr("text-anchor", "end")
         .attr("x", width)
         .attr("y", height + 30)
@@ -127,7 +127,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
         .range([0, height])
         .domain(data.map(function(d) { return d.villes; }))
         .padding(1);
-    svg.append("g")
+    svg_clev.append("g")
         .call(d3.axisLeft(y))
 
 
@@ -137,7 +137,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
     //---------------TOOLTIP---------------------//
     // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
     // Its opacity is set to 0: we don't see it by default.
-    var tooltip = d3.select("#carto1")
+    var tooltip = d3.select("#graph2")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip_clev")
@@ -173,7 +173,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
 
 
     // Lines
-    var lines = svg.selectAll("myline")
+    var lines = svg_clev.selectAll("myline")
         .data(data)
         .enter()
         .append("line")
@@ -189,7 +189,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
 
 
     // Circles of variable 1
-    var dot1 = svg.selectAll("mycircle")
+    var dot1 = svg_clev.selectAll("mycircle")
         .data(data)
         .enter()
         .append("circle")

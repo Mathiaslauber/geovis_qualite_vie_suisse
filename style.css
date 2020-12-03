@@ -3,26 +3,14 @@ html,
 body,
 .grid-container {
     display: grid;
-    grid-template-columns: 300px 323.6px 24px 646px;
-    grid-template-rows: 75px 75px 350px 680px 25px;
+    grid-template-columns: 380px 380px 24px 646px;
+    grid-template-rows: 75px 300px 350px 600px 25px;
     gap: 0.5% 0.5%;
-    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
+    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
 
-.graph1 {
-    grid-area: graph1;
-}
-
-.graph2- {
-    grid-area: graph2-;
-}
-
-.descriptif1 {
-    grid-area: descriptif1;
-}
-
-.carto1 {
-    grid-area: carto1;
+.graph2 {
+    grid-area: graph2;
 }
 
 div.tooltip_clev {
@@ -39,8 +27,20 @@ div.tooltip_clev {
     pointer-events: none;
 }
 
-.descriptif2 {
-    grid-area: descriptif2;
+.graph3 {
+    grid-area: graph3;
+}
+
+.descriptif1 {
+    grid-area: descriptif1;
+}
+
+.carto1 {
+    grid-area: carto1;
+}
+
+.graph1 {
+    grid-area: graph1;
 }
 
 .Titre {
@@ -50,6 +50,9 @@ div.tooltip_clev {
 .footer {
     grid-area: footer;
 }
+
+
+/* */
 
 .carto2 {
     grid-area: carto2;
@@ -61,7 +64,7 @@ div.tooltip_clev {
     top: 15px;
     left: 5px;
     width: 750px;
-    height: 650px;
+    height: 600px;
     background-color: #696969;
     border: 3px solid #FFFFFF;
 }
@@ -88,7 +91,7 @@ div.tooltip_map {
     top: 15px;
     left: calc(760px);
     width: 370px;
-    height: calc(620px);
+    height: calc(650px);
     /*min-height: 90%;
     bottom: 10%;*/
     background-color: #ca1010;
@@ -210,7 +213,7 @@ div.tooltip_clev {
 }
 
 
-/*CE QUI NOMME LES CASES
+/*CE QUI NOMME LES CASES*/
 
 .grid-container *:after {
     content: attr(class);
@@ -218,28 +221,27 @@ div.tooltip_clev {
     top: 0;
     left: 0;
 }
-*/
 
 
 /* derrière le tableau mapdiv*/
 
 div:nth-of-type(1) {
-    background: #ff000000;
+    background: #ff0000a6;
 }
 
 div:nth-of-type(2) {
-    background: #00e1ff00;
+    background: #00e1ff7c;
 }
 
 
 /* derrière la légende sidebar*/
 
 div:nth-of-type(3) {
-    background: #00f5dd00;
+    background: #00f5dd3f;
 }
 
 div:nth-of-type(4) {
-    background: #31856300;
+    background: #31856360;
 }
 
 div:nth-of-type(5) {
@@ -247,7 +249,7 @@ div:nth-of-type(5) {
 }
 
 div:nth-of-type(6) {
-    background: #3f7c8e00;
+    background: #8e3f7d96;
 }
 
 div:nth-of-type(7) {
@@ -263,7 +265,7 @@ div:nth-of-type(9) {
 }
 
 body {
-    background: #a635c900;
+    background: #c9353549;
     color: rgb(122, 94, 94);
     font-family: Comfortaa, sans-serif;
     font-weight: 1000;
