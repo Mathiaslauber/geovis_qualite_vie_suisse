@@ -4,7 +4,7 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: 380px 380px 24px 646px;
-    grid-template-rows: 75px 300px 350px 600px 25px;
+    grid-template-rows: 75px 350px 350px 600px 25px;
     gap: 0.5% 0.5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
@@ -14,10 +14,26 @@ body,
     stroke: grey;
     opacity: .8
 }
-
 .bubbles:hover {
     stroke: rgb(133, 133, 133);
 }
+.bubbles2 {
+    stroke-width: 1px;
+    stroke: grey;
+    opacity: .8
+}
+.bubbles2:hover {
+    stroke: rgb(133, 133, 133);
+}
+.bubbles1 {
+    stroke-width: 1px;
+    stroke: grey;
+    opacity: .8
+}
+.bubbles1:hover {
+    stroke: rgb(133, 133, 133);
+}
+/*-----------------------------*/
 .graph2 {
     grid-area: graph2;
 }
@@ -50,7 +66,9 @@ div.tooltip_clev {
 
 .graph1 {
     grid-area: graph1;
-}
+    position: absolute;
+    z-index: 1;
+  }
 div.tooltip_graph1 {
     position: absolute;
     z-index: 2;
@@ -59,7 +77,7 @@ div.tooltip_graph1 {
     height: 40px;
     padding: 2px;
     font: 12px sans-serif;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(24, 145, 30, 0.767);
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
@@ -165,6 +183,77 @@ div.infobox {
 }
 
 
+/* For presentation only, no need to copy the code below */
+
+.grid-container * {
+    border: 0.25rem solid #bea41400;
+    position: relative;
+}
+
+
+/*CE QUI NOMME LES CASES
+
+.grid-container *:after {
+    content: attr(class);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+*/
+
+/* derrière le tableau mapdiv*/
+
+div:nth-of-type(1) {
+    background: #ff0000a6;
+}
+
+div:nth-of-type(2) {
+    background: #00e1ff7c;
+}
+
+
+/* derrière la légende sidebar*/
+
+div:nth-of-type(3) {
+    background: #00f5dd3f;
+}
+
+div:nth-of-type(4) {
+    background: #31856360;
+}
+
+div:nth-of-type(5) {
+    background: #18123000;
+}
+
+div:nth-of-type(6) {
+    background: #8e3f7d96;
+}
+
+div:nth-of-type(7) {
+    background: #5b932c;
+}
+
+div:nth-of-type(8) {
+    background: #586346;
+}
+
+div:nth-of-type(9) {
+    background: #32c44b;
+}
+
+body {
+    background: #c9353549;
+    color: rgb(122, 94, 94);
+    font-family: Comfortaa, sans-serif;
+    font-weight: 1000;
+    letter-spacing: 0.03rem;
+    line-height: 1;
+    margin: 0 auto;
+}
+
+
+
 /*.grid-container {
     display: grid;
     grid-template-columns: 1.1fr 1.1fr .1fr 2fr;
@@ -225,73 +314,3 @@ div.tooltip_clev {
 
 
 */
-
-
-/* For presentation only, no need to copy the code below */
-
-.grid-container * {
-    border: 0.25rem solid #bea41400;
-    position: relative;
-}
-
-
-/*CE QUI NOMME LES CASES*/
-
-.grid-container *:after {
-    content: attr(class);
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-
-/* derrière le tableau mapdiv*/
-
-div:nth-of-type(1) {
-    background: #ff0000a6;
-}
-
-div:nth-of-type(2) {
-    background: #00e1ff7c;
-}
-
-
-/* derrière la légende sidebar*/
-
-div:nth-of-type(3) {
-    background: #00f5dd3f;
-}
-
-div:nth-of-type(4) {
-    background: #31856360;
-}
-
-div:nth-of-type(5) {
-    background: #18123000;
-}
-
-div:nth-of-type(6) {
-    background: #8e3f7d96;
-}
-
-div:nth-of-type(7) {
-    background: #5b932c;
-}
-
-div:nth-of-type(8) {
-    background: #586346;
-}
-
-div:nth-of-type(9) {
-    background: #32c44b;
-}
-
-body {
-    background: #c9353549;
-    color: rgb(122, 94, 94);
-    font-family: Comfortaa, sans-serif;
-    font-weight: 1000;
-    letter-spacing: 0.03rem;
-    line-height: 1;
-    margin: 0 auto;
-}
