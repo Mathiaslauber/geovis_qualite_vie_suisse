@@ -31,7 +31,7 @@ d3.csv("data/mobi_final_12_18.csv", function(data) {
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("text-decoration", "bold")
-    .text("[%] de motorisation des pendulaires");
+    .text("Villes suisses et choix de mobilité");
     // Add X axis
     var x = d3.scaleLinear()
         .domain([10, 70])
@@ -77,9 +77,17 @@ d3.csv("data/mobi_final_12_18.csv", function(data) {
         .range([2, 30]);
 
     // Add a scale for bubble color
+    
+    //mygroup = ["Zurich", "Berne", "Lucerne", "Bale", "St-Gall", "Lugano", "Lausanne", "Geneve"]
+    mygroup = ["Zurich_ville", "Zurich_agglo", "Berne_ville", "Berne_agglo", "Lucerne_ville", "Lucerne_agglo", "Bale_ville", "Bale_agglo", "St-Gall_ville", "St-Gall_agglo", "Lugano_ville", "Lugano_agglo", "Lausanne_ville", "Lausanne_agglo", "Geneve_ville", "Geneve_agglo"]
+ var myColor2 = d3.scaleOrdinal()
+        .domain(mygroup)
+        .range(["#457b9d","#457b9d", "#e63946", "#e63946", "#48cae4", "#48cae4", "#2b2d42", "#2b2d42", "#006d77", "#006d77", "#b56576", "#b56576", "#52b788",  "#52b788", "#ffcb77","#ffcb77"]);
+    
     var myColor = d3.scaleOrdinal()
         .domain(["Zurich", "Berne", "Lucerne", "Bale", "St-Gall", "Lugano", "Lausanne", "Geneve"])
-        .range(["#457b9d", "#e63946", "#48cae4", "#2b2d42", "#006d77", "#00486B", "#52b788", "#ffcb77"]);
+        //.domain(mygroup)
+        .range(["#457b9d", "#e63946", "#48cae4", "#2b2d42", "#006d77", "#b56576", "#52b788", "#ffcb77"]);
 // zurich originelle couleur "#457b9d"
     var mycolor_agglo = d3.scaleOrdinal()
         .domain(["Ville-centre", "Agglomeration"])
@@ -133,12 +141,19 @@ d3.csv("data/mobi_final_12_18.csv", function(data) {
 
     var showTooltip = function(d) {
         tooltip
+        .transition()
+        .duration(200)
+    
+        tooltip
             .style("opacity", 1)
+            .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles") 
+            .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            .style("top", (d3.mouse(this)[1]) + "px") 
     }
 
     var moveTooltip = function(d) {
-        tooltip
-            .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")            
+        tooltip        
+            .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles") 
             .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
     }
@@ -202,7 +217,7 @@ d3.csv("data/mobi_final_12_18.csv", function(data) {
         .attr("cx", function(d) { return x(d.tp_2018); })
         .attr("cy", function(d) { return y(d.Auto_18); })
         .attr("r", function(d) { return z(d.nbr_auto_1000hab); })
-        .style("fill", function(d) { return myColor(d.cat); })
+        .style("fill", function(d) { return myColor2(d.villes); })
         .style("stroke", function(d) { return mycolor_agglo(d.cat2); })
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)

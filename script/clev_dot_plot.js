@@ -153,12 +153,18 @@ d3.csv("data/lollipop_chart.csv", function(data) {
     // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
     var mouseover = function(d) {
         tooltip
+            .transition()
+            .duration(200)
+        tooltip
             .style("opacity", 1)
+            .html(d.villes + " : La distance moyenne entre 2014 et 2018 est de : " + d.dist_moy_14_19 + " [km] " + " La durée est de : " + d.duree_moy_14_18 + " [min]")
+            .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            .style("top", (d3.mouse(this)[1]) + "px")
+        
     }
 
     var mousemove = function(d) {
         tooltip
-            .html(d.villes + " : La distance moyenne entre 2014 et 2018 est de : " + d.dist_moy_14_19 + " [km] " + " La durée est de : " + d.duree_moy_14_18 + " [min]")
             .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
     }
