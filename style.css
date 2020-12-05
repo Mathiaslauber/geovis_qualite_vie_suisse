@@ -182,8 +182,9 @@ div.infobox {
     font-size: small;
 }
 
-
+/*---------------------------------------------------------*/
 /* For presentation only, no need to copy the code below */
+/*---------------------------------------------------------*/
 
 .grid-container * {
     border: 0.25rem solid #bea41400;
@@ -191,7 +192,7 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES
+/*CE QUI NOMME LES CASES*/
 
 .grid-container *:after {
     content: attr(class);
@@ -199,7 +200,7 @@ div.infobox {
     top: 0;
     left: 0;
 }
-*/
+
 
 /* derrière le tableau mapdiv*/
 

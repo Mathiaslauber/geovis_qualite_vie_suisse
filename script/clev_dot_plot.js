@@ -18,7 +18,7 @@ var margin = { top: 40, right: 40, bottom: 30, left: 160 },
     height = 320 - margin.top - margin.bottom;
 
 // append the svg_clev object to the body of the page
-var svg_clev = d3.select("#graph2")
+var svg_clev = d3.select("#carto1")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -137,7 +137,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
     //---------------TOOLTIP---------------------//
     // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
     // Its opacity is set to 0: we don't see it by default.
-    var tooltip = d3.select("#graph2")
+    var tooltip = d3.select("#carto1")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip_clev")
