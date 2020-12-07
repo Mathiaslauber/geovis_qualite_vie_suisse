@@ -1,15 +1,15 @@
 // set the dimensions and margins of the graph
-var width = 600
-var height = 650
+var width = 400
+var height = 400
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg_force = d3.select("#graph3")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
 
 // Read data
-d3.csv("log_surf_hab_m2.csv", function(data) {
+d3.csv("data/log_surf_hab_m2.csv", function(data) {
 
     // Filter a bit the data -> more than 1 million inhabitants
     //data = data.filter(function(d) { return d.value > 10000000 })
@@ -23,16 +23,16 @@ d3.csv("log_surf_hab_m2.csv", function(data) {
     //.range(d3.schemeSet1);
     // Legend manuelle 
 
-    svg.append("text").attr("x", 25).attr("y", 30).style("font-size", "20px").text("Surface moyenne habitable par personne")
-    svg.append("circle").attr("cx", 75).attr("cy", 120).attr("r", 65).style("fill", "none").style("stroke", "#000")
-    svg.append("circle").attr("cx", 75).attr("cy", 150).attr("r", 35).style("fill", "none").style("stroke", "#000")
+    svg_force.append("text").attr("x", 25).attr("y", 30).style("font-size", "20px").text("Surface moyenne habitable par personne")
+    svg_force.append("circle").attr("cx", 75).attr("cy", 120).attr("r", 65).style("fill", "none").style("stroke", "#000")
+    svg_force.append("circle").attr("cx", 75).attr("cy", 150).attr("r", 35).style("fill", "none").style("stroke", "#000")
 
 
-    svg.append("line").attr("x1", 75).attr("y1", 115).attr("x2", 170).attr("y2", 115).style("fill", "none").style("stroke", "#000")
-    svg.append("line").attr("x1", 75).attr("y1", 55).attr("x2", 170).attr("y2", 55).style("fill", "none").style("stroke", "#000")
+    svg_force.append("line").attr("x1", 75).attr("y1", 115).attr("x2", 170).attr("y2", 115).style("fill", "none").style("stroke", "#000")
+    svg_force.append("line").attr("x1", 75).attr("y1", 55).attr("x2", 170).attr("y2", 55).style("fill", "none").style("stroke", "#000")
 
-    svg.append("text").attr("x", 171).attr("y", 115).text("35 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
-    svg.append("text").attr("x", 171).attr("y", 55).text("50 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
+    svg_force.append("text").attr("x", 171).attr("y", 115).text("35 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
+    svg_force.append("text").attr("x", 171).attr("y", 55).text("50 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
         // Size scale for countries
         //scalePow
         //More included for completeness, rather than practical usefulness, the power scale interpolates using a power (y = m * x^k + b) function. The exponent k is set using .exponent():
@@ -44,13 +44,15 @@ d3.csv("log_surf_hab_m2.csv", function(data) {
 
     var size = d3.scaleLinear()
         .domain([30, 49])
-        .range([15, 65]) // circle will be between 7 and 55 px wide
+        .range([5, 40]) // circle will be between 7 and 55 px wide
 
     // create a tooltip
-    var Tooltip = d3.select("#my_dataviz")
+    var Tooltip = d3.select("#graph3")
         .append("div")
         .style("opacity", 0)
-        .attr("class", "tooltip")
+        .attr("width", "100px")
+        .attr("height", "100px")
+        .attr("class", "tooltip_force")
         .style("background-color", "#F3F4F6")
         .style("border", "none")
         //.style("border-width", "2px")
@@ -58,25 +60,37 @@ d3.csv("log_surf_hab_m2.csv", function(data) {
         .style("min-width", "400px")
         .style("padding", "15px")
 
+
+
+
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
         Tooltip
+            .transition()
+            .duration(200)
+        Tooltip
             .style("opacity", 1)
+            .html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
+            .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+            .style("top", (d3.mouse(this)[1]) + "px")
     }
     var mousemove = function(d) {
         Tooltip
             .html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
-            .style("left", (d3.mouse(this)[0] + 50) + "px")
+            .style("left", (d3.mouse(this)[0] + 70) + "px")
             .style("top", (d3.mouse(this)[1]) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
+            .transition()
+            .duration(200)
             .style("opacity", 0)
+
     }
 
 
-    // Initialize the circle: all located at the center of the svg area
-    var node = svg.append("g")
+    // Initialize the circle: all located at the center of the svg_force area
+    var node = svg_force.append("g")
         .selectAll("circle")
         .data(data)
         .enter()

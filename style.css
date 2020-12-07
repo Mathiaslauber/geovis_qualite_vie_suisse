@@ -67,6 +67,21 @@ div.tooltip_clev {
     grid-area: graph3;
 }
 
+div.tooltip_force {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    color: #7fa6b9;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 .descriptif1 {
     grid-area: descriptif1;
     position: absolute;
@@ -211,7 +226,7 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES
+/*CE QUI NOMME LES CASES*/
 
 .grid-container *:after {
     content: attr(class);
@@ -219,7 +234,6 @@ div.infobox {
     top: 0;
     left: 0;
 }
-*/
 
 
 /* derrière le tableau mapdiv*/

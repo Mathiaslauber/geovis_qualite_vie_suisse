@@ -66,8 +66,14 @@
 <body>
     <div class="grid-container">
         <div class="graph2" id="graph2"></div>
-        <div class="graph3" id="graph3">
 
+        <div class="graph3" id="graph3">
+            <style>
+                .node:hover {
+                    stroke-width: 4px !important;
+                    opacity: 0.9 !important;
+                }
+            </style>
 
         </div>
         <div class="descriptif1" id="descriptif1">
@@ -175,12 +181,13 @@
     <!--Chargement de Classybrew pour la mise en classe avec la méthode jenks-->
     <script src="https://cdn.rawgit.com/christiankaiser/classybrew/b8ca77d5a6b7eef5586f5148c36ee937aa1bacfb/build/classybrew.min.js"></script>
 
-    <!-- Lien vers le script -->
+    <!-- Lien vers les scripts des différentes visualisations -->
     <script src="main.js"></script>
     <script src="script/d3svgoverlaymap_symbol.js"></script>
     <script src="script/clev_dot_plot.js"></script>
     <script src="script/bubble_chart.js"></script>
     <script src="script/scatter_plot_motor.js"></script>
+    <script src="script/logement_force_pack.js"></script>
     <!-- Run the script once everything is loaded -->
     <!--script>
         (function() {
