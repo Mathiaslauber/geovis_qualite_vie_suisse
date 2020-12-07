@@ -66,8 +66,25 @@
 <body>
     <div class="grid-container">
         <div class="graph2" id="graph2"></div>
-        <div class="graph3"></div>
-        <div class="descriptif1"></div>
+        <div class="graph3" id="graph3">
+
+
+        </div>
+        <div class="descriptif1" id="descriptif1">
+            <div id="tooltip_graph1" class="tooltip_graph1">
+                <style>
+                    .bubbles {
+                        stroke-width: 2px;
+                        stroke: rgb(248, 248, 248);
+                        opacity: 1
+                    }
+                    
+                    .bubbles:hover {
+                        stroke: black;
+                    }
+                </style>
+            </div>
+        </div>
         <div class="carto1" id="carto1">
             <select id="selectButton_cleveland"></select>
             <div class="tooltip_clev" id="tooltip_clev">
@@ -85,22 +102,7 @@
             </div>
         </div>
 
-        <div class="graph1" id="graph1">
-            <div id="tooltip_graph1" class="tooltip_graph1">
-                <style>
-                    .bubbles {
-                        stroke-width: 2px;
-                        stroke: rgb(248, 248, 248);
-                        opacity: 1
-                    }
-                    
-                    .bubbles:hover {
-                        stroke: black;
-                    }
-                </style>
-            </div>
-
-        </div>
+        <div class="graph1" id="graph1"></div>
         <div class="Titre"></div>
         <div class="footer"></div>
         <div class="carto2" id="carto2">
@@ -177,6 +179,7 @@
     <script src="script/d3svgoverlaymap_symbol.js"></script>
     <script src="script/clev_dot_plot.js"></script>
     <script src="script/bubble_chart.js"></script>
+    <script src="script/scatter_plot_motor.js"></script>
     <!-- Run the script once everything is loaded -->
     <!--script>
         (function() {

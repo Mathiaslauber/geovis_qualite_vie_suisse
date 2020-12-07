@@ -3,37 +3,48 @@ html,
 body,
 .grid-container {
     display: grid;
-    grid-template-columns: 380px 380px 24px 646px;
-    grid-template-rows: 75px 350px 350px 600px 25px;
+    grid-template-columns: 400px 400px 24px 650px;
+    grid-template-rows: 75px 400px 400px 600px 25px;
     gap: 0.5% 0.5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
+
+
 /* hover des bubbles pour tous les graphs*/
+
 .bubbles {
     stroke-width: 1px;
     stroke: grey;
     opacity: .8
 }
+
 .bubbles:hover {
     stroke: rgb(133, 133, 133);
 }
+
 .bubbles2 {
     stroke-width: 1px;
     stroke: grey;
     opacity: .8
 }
+
 .bubbles2:hover {
     stroke: rgb(133, 133, 133);
 }
+
 .bubbles1 {
     stroke-width: 1px;
     stroke: grey;
     opacity: .8
 }
+
 .bubbles1:hover {
     stroke: rgb(133, 133, 133);
 }
+
+
 /*-----------------------------*/
+
 .graph2 {
     grid-area: graph2;
 }
@@ -58,6 +69,8 @@ div.tooltip_clev {
 
 .descriptif1 {
     grid-area: descriptif1;
+    position: absolute;
+    z-index: 1;
 }
 
 .carto1 {
@@ -66,9 +79,8 @@ div.tooltip_clev {
 
 .graph1 {
     grid-area: graph1;
-    position: absolute;
-    z-index: 1;
-  }
+}
+
 div.tooltip_graph1 {
     position: absolute;
     z-index: 2;
@@ -182,8 +194,13 @@ div.infobox {
     font-size: small;
 }
 
+
 /*---------------------------------------------------------*/
+
+
 /* For presentation only, no need to copy the code below */
+
+
 /*---------------------------------------------------------*/
 
 .grid-container * {
@@ -192,7 +209,7 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES*/
+/*CE QUI NOMME LES CASES
 
 .grid-container *:after {
     content: attr(class);
@@ -200,6 +217,7 @@ div.infobox {
     top: 0;
     left: 0;
 }
+*/
 
 
 /* derrière le tableau mapdiv*/
@@ -245,14 +263,13 @@ div:nth-of-type(9) {
 
 body {
     background: #c9353549;
-    color: rgb(122, 94, 94);
+    color: rgba(122, 94, 94, 0);
     font-family: Comfortaa, sans-serif;
     font-weight: 1000;
     letter-spacing: 0.03rem;
     line-height: 1;
     margin: 0 auto;
 }
-
 
 
 /*.grid-container {
