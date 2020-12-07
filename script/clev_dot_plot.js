@@ -13,9 +13,9 @@ Tooltip bug
 // set the dimensions and margins of the graph
 
 
-var margin = { top: 40, right: 40, bottom: 30, left: 160 },
-    width = 600 - margin.left - margin.right,
-    height = 320 - margin.top - margin.bottom;
+var margin = { top: 40, right: 40, bottom: 100, left: 100 },
+    width = 650 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 // append the svg_clev object to the body of the page
 var svg_clev = d3.select("#carto1")
@@ -160,7 +160,7 @@ d3.csv("data/lollipop_chart.csv", function(data) {
             .html(d.villes + " : La distance moyenne entre 2014 et 2018 est de : " + d.dist_moy_14_19 + " [km] " + " La durée est de : " + d.duree_moy_14_18 + " [min]")
             .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
-        
+
     }
 
     var mousemove = function(d) {

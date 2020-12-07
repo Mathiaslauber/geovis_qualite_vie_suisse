@@ -59,6 +59,7 @@ div.tooltip_clev {
     font: 12px sans-serif;
     background: rgba(255, 255, 255, 0);
     border: 0px;
+    color: #d1d9dd;
     border-radius: 8px;
     pointer-events: none;
 }
@@ -202,13 +203,13 @@ table {
     letter-spacing: 1px;
     font-family: sans-serif;
     font-size: .8rem;
-    color: #586346;
+    color: #6b6b6b;
 }
 
 div.infobox {
     font: "Comfortaa";
     font-size: small;
-    color: #586346;
+    color: #585858;
 }
 
 
@@ -226,35 +227,35 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES*/
-
+/*CE QUI NOMME LES CASES
 .grid-container *:after {
     content: attr(class);
     position: absolute;
     top: 0;
     left: 0;
 }
+*/
 
 
 /* derrière le tableau mapdiv*/
 
 div:nth-of-type(1) {
-    background: #0400ff00;
+    background: #bfbfcfbb;
 }
 
 div:nth-of-type(2) {
-    background: #00e1ff7c;
+    background: #0093a7bb;
 }
 
 
 /* derrière la légende sidebar*/
 
 div:nth-of-type(3) {
-    background: #00f5dd3f;
+    background: #00f5dd8c;
 }
 
 div:nth-of-type(4) {
-    background: #31856360;
+    background: #31856300;
 }
 
 div:nth-of-type(5) {
@@ -262,19 +263,19 @@ div:nth-of-type(5) {
 }
 
 div:nth-of-type(6) {
-    background: #8e3f7d96;
+    background: #8e3f7d00;
 }
 
 div:nth-of-type(7) {
-    background: #5b932c;
+    background: #5a932c05;
 }
 
 div:nth-of-type(8) {
-    background: #586346;
+    background: #58634600;
 }
 
 div:nth-of-type(9) {
-    background: #32c44b;
+    background: #32c44a00;
 }
 
 body {
