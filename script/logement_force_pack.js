@@ -28,8 +28,19 @@ function logement_force_packing() {
     // Read data
     d3.csv("data/log_surf_hab_m2.csv", function(data) {
 
-            // Filter a bit the data -> more than 1 million inhabitants
-            //data = data.filter(function(d) { return d.value > 10000000 })
+            // ---------------------- TITRE ---------------------//
+
+
+            svg_graph3.append("text")
+                .attr("x", margin_graph3.left + 125)
+                .attr("y", 15 - (margin_graph3.top / 1.3))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "bold")
+                .text("Logement : Surface habitable en [m2]")
+                .style("font-size", "17px")
+                .style("text-decoration", "italic")
+                //.style("letter-spacing", "-0.75px");
 
             // Color palette for continents?
             var color = d3.scaleOrdinal()
@@ -40,16 +51,16 @@ function logement_force_packing() {
             //.range(d3.schemeSet1);
             // Legend manuelle 
 
-            svg_graph3.append("text").attr("x", 5).attr("y", 5).style("font-size", "20px").text("Surface moyenne habitable par personne")
+            //svg_graph3.append("text").attr("x", 5).attr("y", 5).style("font-size", "20px").text("Surface moyenne habitable par personne")
             svg_graph3.append("circle").attr("cx", 15).attr("cy", 50).attr("r", 40).style("fill", "none").style("stroke", "#000")
             svg_graph3.append("circle").attr("cx", 15).attr("cy", 75).attr("r", 15).style("fill", "none").style("stroke", "#000")
 
 
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 70).attr("y2", 60).style("fill", "none").style("stroke", "#000")
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 70).attr("y2", 10).style("fill", "none").style("stroke", "#000")
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 65).attr("y2", 60).style("fill", "none").style("stroke", "#000")
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 65).attr("y2", 10).style("fill", "none").style("stroke", "#000")
 
-            svg_graph3.append("text").attr("x", 75).attr("y", 60).text("35 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
-            svg_graph3.append("text").attr("x", 75).attr("y", 10).text("50 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
+            svg_graph3.append("text").attr("x", 70).attr("y", 60).text("35 m2").style("font-size", "14px").attr("alignment-baseline", "middle").style("letter-spacing", "-0.75px")
+            svg_graph3.append("text").attr("x", 70).attr("y", 10).text("50 m2").style("font-size", "154x").attr("alignment-baseline", "middle").style("letter-spacing", "-0.75px")
                 // Size scale for countries
                 //scalePow
                 //More included for completeness, rather than practical usefulness, the power scale interpolates using a power (y = m * x^k + b) function. The exponent k is set using .exponent():
@@ -117,7 +128,7 @@ function logement_force_packing() {
                 .attr("cy", height / 2)
                 .style("fill", function(d) { return color(d.cat) })
                 .style("fill-opacity", 0.8)
-                .attr("stroke", "white")
+                .attr("stroke", "grey")
                 .style("stroke-width", 1)
                 //.style('stroke-dasharray', '3,5')
                 .attr("stroke-dasharray", function(d) {
@@ -187,25 +198,25 @@ function logement_force_packing() {
             }
 
         })
-        // Légende agglo 
+        // -------------------------- LEGENDE AGGLO VS VILLE ------------------------//
     var mycolor_dash = d3.scaleOrdinal()
         .domain(["Ville-centre", "Agglomeration"])
         //.range(["#000", "#7A7A7A"]);
         .range(["1,3", "0,0"]);
 
-    var size = 20
+    var size = 25
     var allgroups = ["Ville-centre", "Agglomeration"]
     svg_graph3.selectAll("myrect2")
         .data(allgroups)
         .enter()
         .append("circle")
-        .attr("cx", 15)
-        .attr("cy", function(d, i) { return 125 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
-        .attr("r", 7)
+        .attr("cx", 200)
+        .attr("cy", function(d, i) { return 12 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("r", 12)
         .style("stroke-dasharray", function(d) { return mycolor_dash(d) })
-        .attr("stroke", "white")
+        .attr("stroke", "grey")
         .style("fill", "none")
-        .style("stroke-width", 1)
+        .style("stroke-width", 1.5)
         .style("stroke-linecap", "round")
         //.style('stroke-dasharray', '3,5')
         // Add labels beside legend dots
@@ -213,12 +224,15 @@ function logement_force_packing() {
         .data(allgroups)
         .enter()
         .append("text")
-        .attr("x", 20 + size * .8)
-        .attr("y", function(d, i) { return 125 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("x", 200 + size * .8)
+        .attr("y", function(d, i) { return 0 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d) { return mycolor_dash(d) })
         .text(function(d) { return d })
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
+        .style("font-size", "12px")
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.75px");
 
 
 }

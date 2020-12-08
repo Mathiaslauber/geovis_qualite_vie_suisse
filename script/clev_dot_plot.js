@@ -13,7 +13,7 @@ Tooltip bug
 // set the dimensions and margins of the graph
 
 function clev_dot_plot() {
-    let margin_carto1 = { top: 40, right: 40, bottom: 20, left: 100 },
+    let margin_carto1 = { top: 40, right: 40, bottom: 40, left: 100 },
         width = 650 - margin_carto1.left - margin_carto1.right,
         height = 400 - margin_carto1.top - margin_carto1.bottom;
 
@@ -129,6 +129,12 @@ function clev_dot_plot() {
             .padding(1);
         svg_clev.append("g")
             .call(d3.axisLeft(y))
+            .selectAll("text")
+            //.attr("transform", "translate(-10,10)rotate(-45)")
+            //.style("text-anchor", "end")
+            //.style("font-size", 20)
+            .style("font-family", "Comfortaa")
+            .style("fill", "grey")
 
 
         var myColor = d3.scaleOrdinal()

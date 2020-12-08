@@ -66,6 +66,20 @@ div.tooltip_clev {
     pointer-events: none;
 }
 
+.select {
+    position: relative;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+
 .graph3 {
     grid-area: graph3;
     position: absolute;
@@ -241,6 +255,7 @@ div.infobox {
 
 
 /*CE QUI NOMME LES CASES
+
 .grid-container *:after {
     content: attr(class);
     position: absolute;
@@ -257,7 +272,7 @@ div:nth-of-type(1) {
 }
 
 div:nth-of-type(2) {
-    background: #0093a7bb;
+    background: #0094a700;
 }
 
 
