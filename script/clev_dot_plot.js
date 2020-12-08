@@ -105,6 +105,14 @@ function clev_dot_plot() {
             .append('option')
             .text(function(d) { return d; }) // text showed in the menu
             .attr("value", function(d) { return d; }) // corresponding value returned by the button
+            .style("background-color", "grey")
+            .attr("id", "buttonCentre")
+            .style("font-family", "Comfortaa")
+            .on('click', function() {
+                d3.select("#buttonCentre")
+                    .style("background-color", "grey")
+                    .style("font-family", "Comfortaa")
+            });
 
 
 
