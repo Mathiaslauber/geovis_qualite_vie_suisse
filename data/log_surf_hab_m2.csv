@@ -1,17 +1,17 @@
-villes,indicateurs,cat,pop,X2014,X2015,X2016,X2017,X2018,X2019
-Zurich_ville,"Surface d'habitation moyenne par personne, en m2",a,409 241,38.8,38.6,38.7,38.9,38.9,39
-Zurich_agglo,"Surface d'habitation moyenne par personne, en m2",a,1 369 041,44.4,44.3,44.5,44.6,44.5,44.6
-Berne_ville,"Surface d'habitation moyenne par personne, en m2",b,133 798,39.5,39,38.9,38.8,38.7,38.9
-Berne_agglo,"Surface d'habitation moyenne par personne, en m2",b,418 525,44.3,44.3,44.3,44.4,44.4,44.6
-Lucerne_ville,"Surface d'habitation moyenne par personne, en m2",c,81 401,45.4,45.4,45.4,45.5,45.4,45.5
-Lucerne_agglo,"Surface d'habitation moyenne par personne, en m2",c,229 407,45,45.1,45.3,45.5,45.7,45.8
-Bale_ville,"Surface d'habitation moyenne par personne, en m2",d,171 513,41.2,40.9,40.6,40.4,40.2,40.1
-Bale_agglo,"Surface d'habitation moyenne par personne, en m2",d,547 761,45.7,45.6,45.6,45.7,45.6,45.8
-St-Gall_ville,"Surface d'habitation moyenne par personne, en m2",e,75 522,44.2,44.1,44.5,44.4,44.5,44.5
-St-Gall_agglo,"Surface d'habitation moyenne par personne, en m2",e,166 762,46.6,46.7,46.9,47,47.2,47.4
-Lugano_ville,"Surface d'habitation moyenne par personne, en m2",f,63 494,46.1,46.3,46.2,46.6,46.8,46.9
-Lugano_agglo,"Surface d'habitation moyenne par personne, en m2",f,151 207,46.9,47.1,47.1,47.5,47.8,48.1
-Lausanne_ville,"Surface d'habitation moyenne par personne, en m2",g,138 905,37,36.8,36.8,36.7,36.7,36.8
-Lausanne_agglo,"Surface d'habitation moyenne par personne, en m2",g,420 757,40.9,40.8,40.9,40.9,41,41.2
-Geneve_ville,"Surface d'habitation moyenne par personne, en m2",h,200 548,37.4,36.8,36.4,36.2,36,35.3
-Geneve_agglo,"Surface d'habitation moyenne par personne, en m2",h,592 060,38.8,38.4,38.3,38.4,38.3,38.1
+villes,indicateurs,cat,cat_x,pop,X2014,X2015,X2016,X2017,X2018,X2019
+Zurich_ville,"Surface d'habitation moyenne par personne, en m2",a,ville ,409 241,38.8,38.6,38.7,38.9,38.9,39
+Zurich_agglo,"Surface d'habitation moyenne par personne, en m2",a,agglo,1 369 041,44.4,44.3,44.5,44.6,44.5,44.6
+Berne_ville,"Surface d'habitation moyenne par personne, en m2",b,ville ,133 798,39.5,39,38.9,38.8,38.7,38.9
+Berne_agglo,"Surface d'habitation moyenne par personne, en m2",b,agglo,418 525,44.3,44.3,44.3,44.4,44.4,44.6
+Lucerne_ville,"Surface d'habitation moyenne par personne, en m2",c,ville ,81 401,45.4,45.4,45.4,45.5,45.4,45.5
+Lucerne_agglo,"Surface d'habitation moyenne par personne, en m2",c,agglo,229 407,45,45.1,45.3,45.5,45.7,45.8
+Bale_ville,"Surface d'habitation moyenne par personne, en m2",d,ville ,171 513,41.2,40.9,40.6,40.4,40.2,40.1
+Bale_agglo,"Surface d'habitation moyenne par personne, en m2",d,agglo,547 761,45.7,45.6,45.6,45.7,45.6,45.8
+St-Gall_ville,"Surface d'habitation moyenne par personne, en m2",e,ville ,75 522,44.2,44.1,44.5,44.4,44.5,44.5
+St-Gall_agglo,"Surface d'habitation moyenne par personne, en m2",e,agglo,166 762,46.6,46.7,46.9,47,47.2,47.4
+Lugano_ville,"Surface d'habitation moyenne par personne, en m2",f,ville ,63 494,46.1,46.3,46.2,46.6,46.8,46.9
+Lugano_agglo,"Surface d'habitation moyenne par personne, en m2",f,agglo,151 207,46.9,47.1,47.1,47.5,47.8,48.1
+Lausanne_ville,"Surface d'habitation moyenne par personne, en m2",g,ville ,138 905,37,36.8,36.8,36.7,36.7,36.8
+Lausanne_agglo,"Surface d'habitation moyenne par personne, en m2",g,agglo,420 757,40.9,40.8,40.9,40.9,41,41.2
+Geneve_ville,"Surface d'habitation moyenne par personne, en m2",h,ville ,200 548,37.4,36.8,36.4,36.2,36,35.3
+Geneve_agglo,"Surface d'habitation moyenne par personne, en m2",h,agglo,592 060,38.8,38.4,38.3,38.4,38.3,38.1
