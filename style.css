@@ -4,7 +4,7 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: 400px 400px 24px 650px;
-    grid-template-rows: 75px 400px 400px 600px 25px;
+    grid-template-rows: 75px 400px 430px 600px 25px;
     gap: 0.5% 0.5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
@@ -47,6 +47,8 @@ body,
 
 .graph2 {
     grid-area: graph2;
+    position: absolute;
+    z-index: 1;
 }
 
 div.tooltip_clev {
@@ -66,6 +68,8 @@ div.tooltip_clev {
 
 .graph3 {
     grid-area: graph3;
+    position: absolute;
+    z-index: 1;
 }
 
 div.tooltip_force {
@@ -91,10 +95,13 @@ div.tooltip_force {
 
 .carto1 {
     grid-area: carto1;
+    position: absolute;
 }
 
 .graph1 {
     grid-area: graph1;
+    position: absolute;
+    z-index: 1;
 }
 
 div.tooltip_graph1 {
@@ -113,10 +120,14 @@ div.tooltip_graph1 {
 
 .Titre {
     grid-area: Titre;
+    position: absolute;
+    z-index: 1;
 }
 
 .footer {
     grid-area: footer;
+    position: absolute;
+    z-index: 1;
 }
 
 
@@ -124,6 +135,8 @@ div.tooltip_graph1 {
 
 .carto2 {
     grid-area: carto2;
+    position: absolute;
+    z-index: 1;
 }
 
 #mapdiv {
