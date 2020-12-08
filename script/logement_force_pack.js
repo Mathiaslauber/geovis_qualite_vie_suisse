@@ -9,7 +9,7 @@ function logement_force_packing() {
     // set the dimensions and margins of the graph
     var sizeX = 400
     var sizeY = 430
-    var margin_graph3 = { top: 30, right: 20, bottom: 30, left: 30 },
+    var margin_graph3 = { top: 50, right: 20, bottom: 30, left: 30 },
         width = sizeX - margin_graph3.left - margin_graph3.right,
         height = sizeY - margin_graph3.top - margin_graph3.bottom;
 
@@ -41,15 +41,15 @@ function logement_force_packing() {
         // Legend manuelle 
 
         svg_graph3.append("text").attr("x", 25).attr("y", 30).style("font-size", "20px").text("Surface moyenne habitable par personne")
-        svg_graph3.append("circle").attr("cx", 10).attr("cy", 280).attr("r", 40).style("fill", "none").style("stroke", "#000")
-        svg_graph3.append("circle").attr("cx", 10).attr("cy", 310).attr("r", 5).style("fill", "none").style("stroke", "#000")
+        svg_graph3.append("circle").attr("cx", 15).attr("cy", 50).attr("r", 40).style("fill", "none").style("stroke", "#000")
+        svg_graph3.append("circle").attr("cx", 15).attr("cy", 75).attr("r", 15).style("fill", "none").style("stroke", "#000")
 
 
-        svg_graph3.append("line").attr("x1", 75).attr("y1", 115).attr("x2", 170).attr("y2", 115).style("fill", "none").style("stroke", "#000")
-        svg_graph3.append("line").attr("x1", 75).attr("y1", 55).attr("x2", 170).attr("y2", 55).style("fill", "none").style("stroke", "#000")
+        svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 70).attr("y2", 60).style("fill", "none").style("stroke", "#000")
+        svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 70).attr("y2", 10).style("fill", "none").style("stroke", "#000")
 
-        svg_graph3.append("text").attr("x", 171).attr("y", 115).text("35 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
-        svg_graph3.append("text").attr("x", 171).attr("y", 55).text("50 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
+        svg_graph3.append("text").attr("x", 75).attr("y", 60).text("35 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
+        svg_graph3.append("text").attr("x", 75).attr("y", 10).text("50 m2").style("font-size", "15px").attr("alignment-baseline", "middle")
             // Size scale for countries
             //scalePow
             //More included for completeness, rather than practical usefulness, the power scale interpolates using a power (y = m * x^k + b) function. The exponent k is set using .exponent():
@@ -129,9 +129,10 @@ function logement_force_packing() {
                 .on("end", dragended));
 
         // Features of the forces applied to the nodes:
-        var offset = 0
+        // offset permet de réguler le retrait 
+        var offset = 1.8
         var simulation = d3.forceSimulation()
-            .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
+            .force("center", d3.forceCenter().x(width / offset).y(height / offset)) // Attraction to the center of the svg area
             .force("charge", d3.forceManyBody().strength(.7)) // Nodes are attracted one each other of value is > 0
             .force("collide", d3.forceCollide().strength(.05).radius(function(d) { return (size(d.X2019) + 4) }).iterations(1)) // Force that avoids circle overlapping + distance les séparant
 
