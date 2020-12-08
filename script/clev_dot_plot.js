@@ -45,22 +45,33 @@ function clev_dot_plot() {
         .call(makeAnnotations)
 
     */
+    //-------------TITRE----------------------//
+
     svg_clev.append("text")
-        .attr("x", (width / 2))
-        .attr("y", 15 - (margin_carto1.top / 2))
+        .attr("x", margin_carto1.left + 125)
+        .attr("y", 15 - (margin_carto1.top / 1.3))
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("text-decoration", "bold")
-        .text("[%] de motorisation des pendulaires");
-
-    svg_clev.append("text")
-        .attr("x", (width / 2))
-        .attr("y", 450)
-        .attr("text-anchor", "middle")
-        .style("font-size", "8px")
+        .text("Logement : Surface habitable en [m2]")
+        .style("font-size", "17px")
         .style("text-decoration", "italic")
-        .text("* Part des pendulaires utilisant un moyen de transport individuel motorisé (en %)");
+        //.style("letter-spacing", "-0.75px");
+
+
+
     //Part des pendulaires utilisant un moyen de transport individuel motoris� (en %)
+    svg_clev.append("text")
+        .attr("x", width - width + 2)
+        .attr("y", height)
+        .attr("text-anchor", "left")
+        .style("font-size", "10px")
+        .style("text-decoration", "bold")
+        .text("* Il est possible de déplacer les cercles, et d'obtenir des infos en les survolant")
+        .style("font-size", "9px")
+        .style("fill", "grey")
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.9px");
 
 
 

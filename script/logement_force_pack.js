@@ -42,6 +42,20 @@ function logement_force_packing() {
                 .style("text-decoration", "italic")
                 //.style("letter-spacing", "-0.75px");
 
+            // ---------------------- FOOTNOTE ---------------------//
+
+            svg_graph3.append("text")
+                .attr("x", width - width + 2)
+                .attr("y", height)
+                .attr("text-anchor", "left")
+                .style("font-size", "10px")
+                .style("text-decoration", "bold")
+                .text("* Il est possible de déplacer les cercles, et d'obtenir des infos en les survolant")
+                .style("font-size", "9px")
+                .style("fill", "grey")
+                .style("text-decoration", "italic")
+                .style("letter-spacing", "-0.9px");
+
             // Color palette for continents?
             var color = d3.scaleOrdinal()
                 .domain(["a", "b", "c", "d", "e", "f", "g", "h"])
