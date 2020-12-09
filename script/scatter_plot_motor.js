@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 
 function scatter_plot_motor() {
-    let margin_graph1 = { top: 50, right: 5, bottom: 40, left: 30 },
+    let margin_graph1 = { top: 50, right: 15, bottom: 40, left: 60 },
         width = 650 - margin_graph1.left - margin_graph1.right,
         height = 400 - margin_graph1.top - margin_graph1.bottom;
 
@@ -47,20 +47,35 @@ function scatter_plot_motor() {
         //-------TITRAILLE-----//
 
         svg_motor.append("text")
-            .attr("x", margin_graph1.left + 70)
-            .attr("y", 15 - (margin_graph1.top))
+            .attr("x", margin_graph1.left * 2.5)
+            .attr("y", 20 - (margin_graph1.top))
             .attr("text-anchor", "middle")
-            .style("font-size", "16px")
+            .style("font-size", "24px")
             .style("text-decoration", "bold")
-            .text("Utilisation de l'automobile");
+            .text("Evolution de la motorisation")
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.75px");
+
 
         svg_motor.append("text")
-            .attr("x", margin_graph1.left + 70)
+            .attr("x", margin_graph1.left * 2.5 - 15)
             .attr("y", 15 - (margin_graph1.top / 2))
             .attr("text-anchor", "middle")
-            .style("font-size", "10px")
+            .style("font-size", "14px")
             .style("text-decoration", "italic")
             .text("Nombre de voitures pour 1000 hab.");
+
+
+        svg_motor.append("text")
+            .attr("x", "70%")
+            .attr("y", -10)
+            .attr("text-anchor", "left")
+            .style("font-size", "20px")
+            .style("text-decoration", "bold")
+            .text("Surbrilliance")
+            .style("fill", "grey")
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.9px");
 
         // Add X axis --> it is a date format
 
@@ -72,7 +87,7 @@ function scatter_plot_motor() {
         xAxisGenerator.tickValues([1, 2, 3, 4, 5, 6, 7]);
         let tickLabels = ['2011', '2012', '2014', '2015', '2016', '2017', '2018'];
         xAxisGenerator.tickFormat((d, i) => tickLabels[i]);
-        xAxisGenerator.tickSize(-50)
+        xAxisGenerator.tickSize(-10)
             //xAxisGenerator.tickLine("stroke-dasharray", "2,2");
 
 
@@ -82,7 +97,8 @@ function scatter_plot_motor() {
         //.ticks(7)          
         xAxis.attr("transform", "translate(0," + height + ")");
         xAxis.selectAll(".tick text")
-            .attr("font-size", "10")
+            .attr("y", +10)
+            .attr("font-size", "14")
             .attr("font-family", "Comfortaa")
 
 
@@ -100,18 +116,14 @@ function scatter_plot_motor() {
         // Add Y axis
         var y = d3.scaleLinear()
             .domain([200, 650])
-            .range([height - (height / 8), 0])
+            .range([height, 0])
         var yAxis = svg_motor.append("g")
-            .call(d3.axisLeft(y).ticks(4));
+            .call(d3.axisLeft(y).tickValues(["300", "450", "600"]));
 
-        svg_motor.append("text")
-            .attr("text-anchor", "end")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -margin_graph1.left + 45)
-            .attr("x", -margin_graph1.top + 45)
-            .text("Nombre de véhicule pour 1000 hab")
-            .attr("font-size", "14")
 
+        yAxis.selectAll(".tick text")
+            .attr("font-size", "12")
+            .attr("font-family", "Comfortaa")
 
 
         // Add a clipPath: everything out of this area won't be drawn.
@@ -170,7 +182,7 @@ function scatter_plot_motor() {
             .attr("cy", function(d) { return y(d.value) })
             .attr("r", 4)
             .attr("stroke", "white")
-            .style("opacity", "0.75")
+            .style("opacity", "0.4")
 
         // Add a label at the end of each line
         svg_motor
@@ -217,11 +229,12 @@ function scatter_plot_motor() {
             .append('g')
             .append("rect")
             .attr('x', 460)
-            .attr('y', function(d, i) { return 5 + i * 40 })
+            .attr('y', function(d, i) { return 10 + i * 40 })
             .attr("height", 30)
             .attr("width", 30)
             //.style("fill", function(d) { return myColor(d.name) })
             .style("fill", "#d1d1d1")
+            .style("stroke", "grey")
             .on("click", function(d) {
                 // is the element currently visible ?
                 currentOpacity = d3.selectAll("." + d.name).style("opacity")
@@ -251,7 +264,7 @@ function scatter_plot_motor() {
             .enter()
             .append("text")
             .attr('x', 500)
-            .attr('y', function(d, i) { return 20 + i * 40 })
+            .attr('y', function(d, i) { return 25 + i * 40 })
             //.attr("x", 400 + size * .8)
             //.attr("y", function(d, i) { return i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return myColor(d) })
@@ -261,7 +274,7 @@ function scatter_plot_motor() {
             .text(function(d) { return d })
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
-            .style("font-size", "17px")
+            .style("font-size", "19px")
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px")
 

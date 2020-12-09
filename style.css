@@ -12,7 +12,7 @@ body,
 
 body {
     color: rgba(98, 165, 173, 0.959);
-    font-family: Comfortaa, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 1000;
     letter-spacing: 0.03rem;
     line-height: 1;
@@ -223,7 +223,7 @@ div.tooltip_clev {
     z-index: 1;
     background-color: transparent;
     left: 550px;
-    top: -415px;
+    top: -450px;
     background-color: #97d9ffb9;
     border-radius: 7px;
     display: inline-block;

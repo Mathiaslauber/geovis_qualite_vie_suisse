@@ -49,26 +49,27 @@ function clev_dot_plot() {
 
     svg_clev.append("text")
         .attr("x", margin_carto1.left + 100)
-        .attr("y", 0 - 20)
+        .attr("y", 0 - 30)
+        //.style("class", "h4")
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
         .style("text-decoration", "bold")
-        .text("Contraction Temps-distance trajet pendulaire")
-        .style("font-size", "17px")
+        .html("Efficience du trajet pendulaire routier [3]")
+        //.html("City statistics [3]")
+        .style("font-size", "22px")
         .style("text-decoration", "italic")
-        //.style("letter-spacing", "-0.75px");
+        .style("letter-spacing", "-0.75px")
+
 
 
 
     //Part des pendulaires utilisant un moyen de transport individuel motoris� (en %)
     svg_clev.append("text")
-        .attr("x", width - width + 2)
-        .attr("y", height)
+        .attr("x", width / 15)
+        .attr("y", margin_carto1.top - 65)
         .attr("text-anchor", "left")
-        .style("font-size", "10px")
+        .style("font-size", "13px")
         .style("text-decoration", "bold")
         .text("* Il est possible d'obtenir des infos en survolant les cercles")
-        .style("font-size", "9px")
         .style("fill", "grey")
         .style("text-decoration", "italic")
         .style("letter-spacing", "-0.9px");
