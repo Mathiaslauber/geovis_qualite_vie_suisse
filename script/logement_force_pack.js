@@ -30,28 +30,26 @@ function logement_force_packing() {
 
             // ---------------------- TITRE ---------------------//
 
-
             svg_graph3.append("text")
                 .attr("x", margin_graph3.left + 125)
                 .attr("y", 15 - (margin_graph3.top / 1.3))
                 .attr("text-anchor", "middle")
-                .style("font-size", "16px")
+                .style("font-size", "22px")
                 .style("text-decoration", "bold")
-                .text("Logement : Surface habitable en [m2]")
-                .style("font-size", "17px")
+                .html("Logement : Surface habitable en [m2]")
                 .style("text-decoration", "italic")
-                //.style("letter-spacing", "-0.75px");
+                .style("letter-spacing", "-0.75px");
 
             // ---------------------- FOOTNOTE ---------------------//
 
             svg_graph3.append("text")
-                .attr("x", width - width + 2)
-                .attr("y", height)
+                .attr("x", margin_graph3.left - 60)
+                .attr("y", margin_graph3.top - 57)
                 .attr("text-anchor", "left")
                 .style("font-size", "10px")
                 .style("text-decoration", "bold")
                 .text("* Il est possible de déplacer les cercles, et d'obtenir des infos en les survolant")
-                .style("font-size", "9px")
+                .style("font-size", "12px")
                 .style("fill", "grey")
                 .style("text-decoration", "italic")
                 .style("letter-spacing", "-0.9px");

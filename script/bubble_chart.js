@@ -8,7 +8,7 @@
 
 function bubble_chart() {
     // set the dimensions and margins of the graph
-    let margin_descr1 = { top: 30, right: 20, bottom: 60, left: 45 },
+    let margin_descr1 = { top: 30, right: 20, bottom: 20, left: 45 },
         width = 646 - margin_descr1.left - margin_descr1.right,
         height = 400 - margin_descr1.top - margin_descr1.bottom;
 
@@ -27,13 +27,34 @@ function bubble_chart() {
         // ---------------------------//
         //     TITLE & AXIS & SCALE   //
         // ---------------------------//
+
+
         svg_graph1.append("text")
-            .attr("x", margin_descr1.left + 100)
-            .attr("y", 15 - (margin_descr1.top / 2))
-            .attr("text-anchor", "middle")
-            .style("font-size", "16px")
+            .attr("x", margin_descr1.left - 50)
+            .attr("y", margin_descr1.top - 40)
+            .attr("text-anchor", "left")
+            .style("font-size", "22px")
             .style("text-decoration", "bold")
-            .text("Villes suisses et choix de mobilité");
+            .html("Choix modal et bassin de population")
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.75px");
+
+
+
+        svg_graph1.append("text")
+            .attr("x", margin_descr1.left - 50)
+            .attr("y", margin_descr1.top - 25)
+            .attr("text-anchor", "left")
+            .style("font-size", "12px")
+            .style("text-decoration", "bold")
+            .text("* survoler les bulles ci-dessous")
+            .style("font-size", "12px")
+            .style("fill", "grey")
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.9px");
+
+
+
         // Add X axis
         var x = d3.scaleLinear()
             .domain([10, 70])
@@ -45,8 +66,8 @@ function bubble_chart() {
         // Add X axis label:
         svg_graph1.append("text")
             .attr("text-anchor", "end")
-            .attr("x", width - 100)
-            .attr("y", height + 30)
+            .attr("x", width - 10)
+            .attr("y", height - 12)
             .text("[%]Part des pendulaires en transport public")
             //.attr("text-anchor", "right")
             .style("font-size", "14px")
@@ -56,7 +77,7 @@ function bubble_chart() {
         // Add Y axis
         var y = d3.scaleLinear()
             .domain([10, 70])
-            .range([height, 0]);
+            .range([height, 50]);
         //.range([height - (height / 4), 0 + (height / 7)]);
         svg_graph1.append("g")
             .call(d3.axisLeft(y).ticks(5));
@@ -296,7 +317,7 @@ function bubble_chart() {
             .enter()
             .append("circle")
             .attr("cx", 470)
-            .attr("cy", function(d, i) { return 10 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("cy", function(d, i) { return 30 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
             .attr("r", 7)
             .style("fill", function(d) { return myColor(d) })
             .on("mouseover", highlight1)
@@ -310,14 +331,14 @@ function bubble_chart() {
             .enter()
             .append("text")
             .attr("x", 475 + size * .8)
-            .attr("y", function(d, i) { return i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return myColor(d) })
             .style("stroke", "black")
             .style("stroke-width", "0.09")
             .text(function(d) { return d })
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
-            .style("font-size", "14px")
+            .style("font-size", "17px")
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px")
             .on("mouseover", highlight1)
@@ -336,7 +357,7 @@ function bubble_chart() {
             .enter()
             .append("circle")
             .attr("cx", 280)
-            .attr("cy", function(d, i) { return 10 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("cy", function(d, i) { return 30 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
             .attr("r", 7)
             .style("fill", function(d) { return mycolor_agglo(d) })
             .on("mouseover", highlight)
@@ -350,7 +371,7 @@ function bubble_chart() {
             .enter()
             .append("text")
             .attr("x", 280 + size * .8)
-            .attr("y", function(d, i) { return i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return mycolor_agglo(d) })
             .text(function(d) { return d })
             .attr("text-anchor", "left")
