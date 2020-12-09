@@ -1,19 +1,30 @@
 @import "https://fonts.googleapis.com/css?family=Comfortaa:300,700|Bungee+Shade|Josefin+Sans:400";
+@import "https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap";
 html,
 body,
 .grid-container {
     display: grid;
     grid-template-columns: 400px 400px 24px 650px;
     grid-template-rows: 150px 400px 430px 630px 125px;
-    gap: 0.5% 0.5%;
+    gap: 5% 5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
-    background-color: #8cb6b4;
+}
+
+body {
+    color: rgba(98, 165, 173, 0.959);
+    font-family: Comfortaa, sans-serif;
+    font-weight: 1000;
+    letter-spacing: 0.03rem;
+    line-height: 1;
+    margin: 0 auto;
+    background-color: rgba(154, 168, 182, 0.733);
 }
 
 .Titre {
     grid-area: Titre;
     position: absolute;
     z-index: 1;
+    background-color: #9ce0e400;
 }
 
 .footer {
@@ -26,14 +37,14 @@ body,
 /*----------H1----------------*/
 
 h1 {
-    color: #111;
+    color: #070709;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bolder;
-    line-height: 32px;
+    line-height: 40px;
     margin: 0 0 0;
     padding: 10px 15px;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
 }
 
@@ -41,14 +52,14 @@ h1 {
 /*---------H2-----------------*/
 
 h2 {
-    color: #111;
+    color: #070709;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 27px;
     font-weight: normal;
     line-height: 30px;
     margin: 5px 0 24px;
     padding: 0 15px;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
 }
 
@@ -56,16 +67,16 @@ h2 {
 /*----------H3----------------*/
 
 h3 {
-    color: #111;
+    color: #070709;
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 15px;
     margin: -12px 0 24px;
     padding: 0 15px;
-    text-align: left;
+    text-align: center;
     z-index: 1;
-    text-transform: lowercase;
+    text-transform: uppercase;
 }
 
 line {
@@ -353,7 +364,7 @@ div.infobox {
 
 .grid-container * {
     border: 0.25rem solid #bea41404;
-    background: #dcdce700;
+    background: #1f1fe200;
     position: relative;
 }
 
@@ -368,11 +379,15 @@ div.infobox {
 }
 */
 
+
+/*
 div:nth-of-type(1) {
-    background: #5151b300;
+    background: #72b0c08c;
     border: 2px solid rgba(200, 200, 200, 0.644);
     color: #6b6b6b;
 }
+
+
 
 div:nth-of-type(2) {
     background: #0094a788;
@@ -391,14 +406,11 @@ div:nth-of-type(5) {
 }
 
 
-/*titre*/
 
 div:nth-of-type(6) {
     background: #8e3f7d60;
 }
 
-
-/*footer*/
 
 div:nth-of-type(7) {
     background: #5a932c00;
@@ -413,75 +425,5 @@ div:nth-of-type(8) {
 div:nth-of-type(9) {
     background: #32c44aa8;
 }
-
-body {
-    background: #ffffff;
-    color: rgba(122, 94, 94, 0);
-    font-family: Comfortaa, sans-serif;
-    font-weight: 1000;
-    letter-spacing: 0.03rem;
-    line-height: 1;
-    margin: 0 auto;
-}
-
-
-/*.grid-container {
-    display: grid;
-    grid-template-columns: 1.1fr 1.1fr .1fr 2fr;
-    grid-template-rows: 0.2fr 0.5fr 1.9fr 2.3fr 0.1fr;
-    gap: 0.5% 0.5%;
-    grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . descriptif2" "graph1 graph2- . carto1" "tableau1 tableau1 . carto2" "footer footer footer footer";
-}
-
-.tableau1 {
-    grid-area: tableau1;
-}
-
-.graph1 {
-    grid-area: graph1;
-}
-
-.graph2- {
-    grid-area: graph2-;
-}
-
-.descriptif1 {
-    grid-area: descriptif1;
-}
-
-.carto2 {
-    grid-area: carto2;
-}
-
-.carto1 {
-    grid-area: carto1;
-}
-
-div.tooltip_clev {
-    position: absolute;
-    z-index: 2;
-    text-align: left;
-    width: 300px;
-    height: 40px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: rgba(255, 255, 255, 0);
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-.descriptif2 {
-    grid-area: descriptif2;
-}
-
-.Titre {
-    grid-area: Titre;
-}
-
-.footer {
-    grid-area: footer;
-}
-
 
 */
