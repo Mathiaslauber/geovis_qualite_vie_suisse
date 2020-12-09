@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 
 function scatter_plot_motor() {
-    let margin_graph1 = { top: 50, right: 5, bottom: 10, left: 30 },
+    let margin_graph1 = { top: 50, right: 5, bottom: 40, left: 30 },
         width = 650 - margin_graph1.left - margin_graph1.right,
         height = 400 - margin_graph1.top - margin_graph1.bottom;
 
@@ -44,6 +44,7 @@ function scatter_plot_motor() {
         //.range(["#457b9d", "#457b9d", "#e63946", "#e63946", "#48cae4", "#48cae4", "#2b2d42", "#2b2d42", "#006d77", "#006d77", "#b56576", "#b56576", "#52b788", "#52b788", "#ffcb77", "#ffcb77"]);
         //.range(d3.schemeSet2);
 
+        //-------TITRAILLE-----//
 
         svg_motor.append("text")
             .attr("x", margin_graph1.left + 70)
@@ -52,6 +53,7 @@ function scatter_plot_motor() {
             .style("font-size", "16px")
             .style("text-decoration", "bold")
             .text("Utilisation de l'automobile");
+
         svg_motor.append("text")
             .attr("x", margin_graph1.left + 70)
             .attr("y", 15 - (margin_graph1.top / 2))

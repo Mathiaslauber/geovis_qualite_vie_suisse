@@ -13,12 +13,12 @@ Tooltip bug
 // set the dimensions and margins of the graph
 
 function clev_dot_plot() {
-    let margin_carto1 = { top: 40, right: 40, bottom: 40, left: 100 },
+    let margin_carto1 = { top: 50, right: 50, bottom: 40, left: 105 },
         width = 650 - margin_carto1.left - margin_carto1.right,
         height = 400 - margin_carto1.top - margin_carto1.bottom;
 
     // append the svg_clev object to the body of the page
-    var svg_clev = d3.select("#carto1")
+    var svg_clev = d3.select("#carto1bis")
         .append("svg")
         .attr("width", width + margin_carto1.left + margin_carto1.right)
         .attr("height", height + margin_carto1.top + margin_carto1.bottom)
@@ -48,12 +48,12 @@ function clev_dot_plot() {
     //-------------TITRE----------------------//
 
     svg_clev.append("text")
-        .attr("x", margin_carto1.left + 125)
-        .attr("y", 15 - (margin_carto1.top / 1.3))
+        .attr("x", margin_carto1.left + 100)
+        .attr("y", 0 - 20)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("text-decoration", "bold")
-        .text("Logement : Surface habitable en [m2]")
+        .text("Contraction Temps-distance trajet pendulaire")
         .style("font-size", "17px")
         .style("text-decoration", "italic")
         //.style("letter-spacing", "-0.75px");
@@ -67,7 +67,7 @@ function clev_dot_plot() {
         .attr("text-anchor", "left")
         .style("font-size", "10px")
         .style("text-decoration", "bold")
-        .text("* Il est possible de déplacer les cercles, et d'obtenir des infos en les survolant")
+        .text("* Il est possible d'obtenir des infos en survolant les cercles")
         .style("font-size", "9px")
         .style("fill", "grey")
         .style("text-decoration", "italic")
@@ -129,17 +129,30 @@ function clev_dot_plot() {
 
         // Add X axis
         var x = d3.scaleLinear()
-            .domain([0, 0.7])
+            .domain([0, 0.9])
             .range([0, width]);
         svg_clev.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).ticks(4))
+            //.call(d3.axisBottom(x).ticks(3))
+            .call(d3.axisBottom(x).tickValues(["0.2", "0.4", "0.6"]))
+            .selectAll("text")
+            //.attr("transform", "translate(-10,10)rotate(-45)")
+            //.style("text-anchor", "end")
+            //.style("font-size", 20)
+            .style("font-family", "Comfortaa")
+            .style("fill", "grey")
+
+        // AXE Y texte Comfortaa
 
         svg_clev.append("text")
             .attr("text-anchor", "end")
             .attr("x", width)
             .attr("y", height + 30)
-            .text("Ratio Distance [km] / temps[min] trajet");
+            .text("Ratio Distance [km] / temps[min] trajet")
+            .style("font-size", "14px")
+            .style("fill", "grey")
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.75px");
 
         // Y axis
         var y = d3.scaleBand()
@@ -162,7 +175,7 @@ function clev_dot_plot() {
         //---------------TOOLTIP---------------------//
         // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
         // Its opacity is set to 0: we don't see it by default.
-        var tooltip = d3.select("#carto1")
+        var tooltip = d3.select("#carto1bis")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip_clev")

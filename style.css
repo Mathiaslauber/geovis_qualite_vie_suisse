@@ -4,7 +4,7 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: 400px 400px 24px 650px;
-    grid-template-rows: 75px 400px 430px 600px 25px;
+    grid-template-rows: 75px 400px 430px 630px 125px;
     gap: 0.5% 0.5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
@@ -48,37 +48,11 @@ body,
 .graph2 {
     grid-area: graph2;
     position: absolute;
-    z-index: 1;
-}
-
-div.tooltip_clev {
-    position: absolute;
     z-index: 2;
-    text-align: left;
-    width: 300px;
-    height: 40px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: rgba(255, 255, 255, 0);
-    border: 0px;
-    color: #d1d9dd;
-    border-radius: 8px;
-    pointer-events: none;
 }
 
-.select {
-    position: relative;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 0 1em 0 0;
-    margin: 0;
-    width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
-}
+
+/*-------------------------*/
 
 .graph3 {
     grid-area: graph3;
@@ -107,10 +81,81 @@ div.tooltip_force {
     z-index: 1;
 }
 
+
+/*------------------------------*/
+
 .carto1 {
     grid-area: carto1;
     position: absolute;
+    z-index: 2;
 }
+
+.carto1bis {
+    grid-area: carto1;
+    position: relative;
+    z-index: 3;
+}
+
+div.tooltip_clev {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    color: #d1d9dd;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+
+/*.select {
+    position: relative;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+*/
+
+.select {
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+    left: 550px;
+    top: -415px;
+    background-color: #97d9ffb9;
+    border-radius: 7px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Comfortaa;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 7px 10px;
+    text-decoration: none;
+}
+
+.select:hover {
+    background-color: #7bb1f7;
+}
+
+.select:active {
+    position: relative;
+    top: 1px;
+}
+
+
+/*---------------------*/
 
 .graph1 {
     grid-area: graph1;
@@ -126,7 +171,7 @@ div.tooltip_graph1 {
     height: 40px;
     padding: 2px;
     font: 12px sans-serif;
-    background: rgba(24, 145, 30, 0.767);
+    background: rgba(24, 145, 30, 0);
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
@@ -174,7 +219,7 @@ div.tooltip_map {
     height: 90px;
     padding: 2px;
     font: 12px sans-serif;
-    background: rgba(5, 255, 5, 0.24);
+    background: rgba(5, 255, 5, 0);
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
@@ -249,7 +294,7 @@ div.infobox {
 /*---------------------------------------------------------*/
 
 .grid-container * {
-    border: 0.25rem solid #bea41400;
+    border: 0.25rem solid #bea41459;
     position: relative;
 }
 
@@ -265,7 +310,7 @@ div.infobox {
 */
 
 
-/* derrière le tableau mapdiv*/
+/* derrière le tableau mapdiv
 
 div:nth-of-type(1) {
     background: #bfbfcfbb;
@@ -276,38 +321,51 @@ div:nth-of-type(2) {
 }
 
 
-/* derrière la légende sidebar*/
+/* derrière la légende sidebar
 
 div:nth-of-type(3) {
     background: #00f5dd8c;
 }
 
+
 div:nth-of-type(4) {
-    background: #31856300;
+    background: #31856367;
 }
+*/
 
 div:nth-of-type(5) {
     background: #18123000;
 }
 
+
+/*titre*/
+
 div:nth-of-type(6) {
-    background: #8e3f7d00;
+    background: #8e3f7d60;
 }
+
+
+/*footer*/
 
 div:nth-of-type(7) {
-    background: #5a932c05;
+    background: #5a932c00;
+    border: 2px solid rgba(200, 200, 200, 0.644);
+    color: #6b6b6b;
 }
 
+
+/*
 div:nth-of-type(8) {
-    background: #58634600;
+    background: #5c8b0fb9;
 }
 
 div:nth-of-type(9) {
-    background: #32c44a00;
+    background: #32c44aa8;
 }
+*/
 
 body {
-    background: #c9353549;
+    background: #ffffff;
     color: rgba(122, 94, 94, 0);
     font-family: Comfortaa, sans-serif;
     font-weight: 1000;
