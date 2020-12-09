@@ -4,42 +4,76 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: 400px 400px 24px 650px;
-    grid-template-rows: 75px 400px 430px 630px 125px;
+    grid-template-rows: 150px 400px 430px 630px 125px;
     gap: 0.5% 0.5%;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
+    background-color: #8cb6b4;
+}
+
+.Titre {
+    grid-area: Titre;
+    position: absolute;
+    z-index: 1;
+}
+
+.footer {
+    grid-area: footer;
+    position: absolute;
+    z-index: 1;
 }
 
 
-/* hover des bubbles pour tous les graphs*/
+/*----------H1----------------*/
 
-.bubbles {
-    stroke-width: 1px;
-    stroke: grey;
-    opacity: .8
+h1 {
+    color: #111;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+    line-height: 32px;
+    margin: 0 0 0;
+    padding: 10px 15px;
+    text-align: left;
+    text-transform: uppercase;
 }
 
-.bubbles:hover {
-    stroke: rgb(133, 133, 133);
+
+/*---------H2-----------------*/
+
+h2 {
+    color: #111;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 27px;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 5px 0 24px;
+    padding: 0 15px;
+    text-align: left;
+    text-transform: uppercase;
 }
 
-.bubbles2 {
-    stroke-width: 1px;
-    stroke: grey;
-    opacity: .8
+
+/*----------H3----------------*/
+
+h3 {
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 15px;
+    margin: -12px 0 24px;
+    padding: 0 15px;
+    text-align: left;
+    z-index: 1;
+    text-transform: lowercase;
 }
 
-.bubbles2:hover {
-    stroke: rgb(133, 133, 133);
-}
-
-.bubbles1 {
-    stroke-width: 1px;
-    stroke: grey;
-    opacity: .8
-}
-
-.bubbles1:hover {
-    stroke: rgb(133, 133, 133);
+line {
+    border-top: 1px solid #111;
+    display: block;
+    margin-top: 60px;
+    padding-top: 50px;
+    position: relative;
 }
 
 
@@ -74,6 +108,9 @@ div.tooltip_force {
     border-radius: 8px;
     pointer-events: none;
 }
+
+
+/*------------------------------*/
 
 .descriptif1 {
     grid-area: descriptif1;
@@ -177,18 +214,6 @@ div.tooltip_graph1 {
     pointer-events: none;
 }
 
-.Titre {
-    grid-area: Titre;
-    position: absolute;
-    z-index: 1;
-}
-
-.footer {
-    grid-area: footer;
-    position: absolute;
-    z-index: 1;
-}
-
 
 /* */
 
@@ -285,6 +310,39 @@ div.infobox {
 }
 
 
+/* hover des bubbles pour tous les graphs*/
+
+.bubbles {
+    stroke-width: 1px;
+    stroke: grey;
+    opacity: .8
+}
+
+.bubbles:hover {
+    stroke: rgb(133, 133, 133);
+}
+
+.bubbles2 {
+    stroke-width: 1px;
+    stroke: grey;
+    opacity: .8
+}
+
+.bubbles2:hover {
+    stroke: rgb(133, 133, 133);
+}
+
+.bubbles1 {
+    stroke-width: 1px;
+    stroke: grey;
+    opacity: .8
+}
+
+.bubbles1:hover {
+    stroke: rgb(133, 133, 133);
+}
+
+
 /*---------------------------------------------------------*/
 
 
@@ -294,7 +352,8 @@ div.infobox {
 /*---------------------------------------------------------*/
 
 .grid-container * {
-    border: 0.25rem solid #bea41459;
+    border: 0.25rem solid #bea41404;
+    background: #dcdce700;
     position: relative;
 }
 
@@ -309,29 +368,23 @@ div.infobox {
 }
 */
 
-
-/* derrière le tableau mapdiv
-
 div:nth-of-type(1) {
-    background: #bfbfcfbb;
+    background: #5151b300;
+    border: 2px solid rgba(200, 200, 200, 0.644);
+    color: #6b6b6b;
 }
 
 div:nth-of-type(2) {
-    background: #0094a700;
+    background: #0094a788;
 }
-
-
-/* derrière la légende sidebar
 
 div:nth-of-type(3) {
     background: #00f5dd8c;
 }
 
-
 div:nth-of-type(4) {
     background: #31856367;
 }
-*/
 
 div:nth-of-type(5) {
     background: #18123000;
@@ -353,8 +406,6 @@ div:nth-of-type(7) {
     color: #6b6b6b;
 }
 
-
-/*
 div:nth-of-type(8) {
     background: #5c8b0fb9;
 }
@@ -362,7 +413,6 @@ div:nth-of-type(8) {
 div:nth-of-type(9) {
     background: #32c44aa8;
 }
-*/
 
 body {
     background: #ffffff;
