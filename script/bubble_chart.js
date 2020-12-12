@@ -1,9 +1,9 @@
 //---------------À FAIRE-----------------//
-// [] Repositionner les légendes 
-// [] Changer de couleur pour le titre des bubbles
-// [] Changer le titre
-// [] Redisposer les bubbles pour éviter l'effet paquet 
-// [] Problème de couleur pour certaines villes 
+// [x] Repositionner les légendes 
+// [x] Changer de couleur pour le titre des bubbles
+// [x] Changer le titre
+// [-] Redisposer les bubbles pour éviter l'effet paquet 
+// [x] Problème de couleur pour certaines villes 
 
 
 function bubble_chart() {
@@ -57,9 +57,10 @@ function bubble_chart() {
 
         // Add X axis
         var x = d3.scaleLinear()
-            .domain([10, 70])
+            .domain([0, 100])
+            //.domain([10, 70])
             .range([0, width]);
-        svg_graph1.append("g")
+        var xAxis = svg_graph1.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x).ticks(4));
 
@@ -76,10 +77,11 @@ function bubble_chart() {
 
         // Add Y axis
         var y = d3.scaleLinear()
-            .domain([10, 70])
+            //.domain([10, 70])
+            .domain([0, 100])
             .range([height, 50]);
         //.range([height - (height / 4), 0 + (height / 7)]);
-        svg_graph1.append("g")
+        var yAxis = svg_graph1.append("g")
             .call(d3.axisLeft(y).ticks(5));
 
         // Add Y axis label:
@@ -95,9 +97,19 @@ function bubble_chart() {
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px");
 
+            
+        //------CLIP PATH POUR LE ZOOM------//
+        var clip = svg_graph1.append("defs").append("svg:clipPath")
+            .attr("id", "clip")
+            .append("svg:rect")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("x", 0)
+            .attr("y", 0);
+
         // Add a scale for bubble size
         var z = d3.scaleSqrt()
-            .domain([330, 650])
+            .domain([80000, 1400000])
             .range([2, 30]);
 
         // Add a scale for bubble color
@@ -133,35 +145,6 @@ function bubble_chart() {
             .style("border-radius", "5px")
             .style("padding", "10px")
             .style("color", "white")
-
-        // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
-        /*
-   VERSION OBSOLETE DU TOOLTIP
-   var showTooltip = function(d) {
-        tooltip
-            .transition()
-            .duration(200)
-        tooltip
-            .style("opacity", 1)
-            .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")
-            .style("left", (d3.mouse(this).attr("cy") + "px"))
-            .style("top", (d3.mouse(this).attr("cx") + "px"))
-    }
-    var moveTooltip = function(d) {
-        tooltip
-            .style("left", (d3.mouse(this).attr("cy") + "px"))
-            .style("top", (d3.mouse(this).attr("cx") + "px"))
-    }
-    var hideTooltip = function(d) {
-        tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 0)
-    }
-    
-*/
-
-
 
         var showTooltip = function(d) {
             tooltip
@@ -229,9 +212,18 @@ function bubble_chart() {
         // ---------------------------//
         //       CIRCLES              //
         // ---------------------------//
+        // SCATTER VARIABLE POUR LE ZOOM 
 
+
+     // Add brushing
+        /*var brush = d3.brushX()                 // Add the brush feature using the d3.brush function
+            .extent( [ [0,0], [width,height] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
+            .on("end", updateChart) // Each time the brush selection changes, trigger the 'updateChart' function
+        */
+        var scatter = svg_graph1.append('g')
+            .attr("clip-path", "url(#clip)")
         // Add dots
-        svg_graph1.append('g')
+        scatter
             .selectAll("dot")
             .data(data)
             .enter()
@@ -240,7 +232,7 @@ function bubble_chart() {
             .attr("class", function(d) { return "bubbles2 " + d.cat2 })
             .attr("cx", function(d) { return x(d.tp_2018); })
             .attr("cy", function(d) { return y(d.Auto_18); })
-            .attr("r", function(d) { return z(d.nbr_auto_1000hab); })
+            .attr("r", function(d) { return z(d.pop); })
             .style("fill", function(d) { return myColor2(d.villes); })
             .style("stroke", function(d) { return mycolor_agglo(d.cat2); })
             .on("mouseover", showTooltip)
@@ -248,12 +240,20 @@ function bubble_chart() {
             .on("mouseleave", hideTooltip)
 
 
-
+          // Add the brushing
+        /*scatter
+            .append("g")
+            .attr("class", "brush")
+            .call(brush);
+        // A function that set idleTimeOut to null
+        var idleTimeout
+        function idled() { idleTimeout = null; }
+        */
         // ---------------------------//
         //       Nbr autos LEGENDES   //
         // ---------------------------//
         // Add legend: circles
-        var valuesToShow = [350, 450, 650]
+        var valuesToShow = [100000, 800000, 1400000]
         var xCircle = 80
         var xLabel = 120
         var yCircle = 390
@@ -356,7 +356,7 @@ function bubble_chart() {
             .data(allgroups)
             .enter()
             .append("circle")
-            .attr("cx", 280)
+            .attr("cx", 550)
             .attr("cy", function(d, i) { return 30 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
             .attr("r", 7)
             .style("fill", function(d) { return mycolor_agglo(d) })
@@ -370,7 +370,7 @@ function bubble_chart() {
             .data(allgroups)
             .enter()
             .append("text")
-            .attr("x", 280 + size * .8)
+            .attr("x", 550 + size * .8)
             .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return mycolor_agglo(d) })
             .text(function(d) { return d })
@@ -378,6 +378,72 @@ function bubble_chart() {
             .style("alignment-baseline", "middle")
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight)
+    
+
+    //-------PARAMETRES DU ZOOM DANS LE GRAPH------//
+    // Set the zoom and Pan features: how much you can zoom, on which part, and what to do when there is a zoom
+    /*var zoom = d3.zoom()
+        .scaleExtent([.5, 5]) // This control how much you can unzoom (x0.5) and zoom (x20)
+        .extent([
+            [0, 0],
+            [width, height]
+        ])
+        .on("zoom", updateChart);
+
+    // This add an invisible rect on top of the chart area. This rect can recover pointer events: necessary to understand when the user zoom
+    svg_graph1.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "none")
+        .style("pointer-events", "all")
+        .attr('transform', 'translate(' + margin_descr1.left + ',' + margin_descr1.top + ')')
+        .call(zoom); */
+    // now the user can zoom and it will trigger the function called updateChart
+
+    // A function that updates the chart when the user zoom and thus new boundaries are available
+        
+    /*function updateChart() {
+
+            extent = d3.event.selection
+        
+            // If no selection, back to initial coordinate. Otherwise, update X axis domain
+            if(!extent){
+            if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
+            x.domain([0,100])
+            }else{
+            x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
+            scatter.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+            }
+        
+            // Update axis and circle position
+            xAxis.transition().duration(1000).call(d3.axisBottom(x))
+            scatter
+            .selectAll("circle")
+            .transition().duration(1000)
+            .attr("cx", function (d) { return x(d.tp_2018); } )
+            .attr("cy", function (d) { return y(d.Auto18); } )
+        
+        }
+    function updateChart() {
+
+        // recover the new scale
+        var newX = d3.event.transform.rescaleX(x);
+        var newY = d3.event.transform.rescaleY(y);
+
+        // update axes with these new boundaries
+        xAxis.call(d3.axisBottom(newX))
+        yAxis.call(d3.axisLeft(newY))
+
+        // update circle position
+        scatter
+            .selectAll("circle")
+            .attr("cx", function(d) { return newX(d.tp_2018)})
+            .attr("cy", function(d) { return newY(d.Auto18)});
+            
+
+          
+        }*/
     })
+
 }
 bubble_chart();
