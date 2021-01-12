@@ -130,7 +130,7 @@ function clev_dot_plot() {
 
         // Add X axis
         var x = d3.scaleLinear()
-            .domain([0, 0.9])
+            .domain([0.3, 0.7])
             .range([0, width]);
         svg_clev.append("g")
             .attr("transform", "translate(0," + height + ")")

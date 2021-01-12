@@ -18,6 +18,7 @@ body {
     line-height: 1;
     margin: 0 auto;
     background-color: rgba(154, 168, 182, 0.733);
+    /*background-color: rgba(0, 0, 0, 0.842);*/
 }
 
 
@@ -54,10 +55,23 @@ a:hover {
 .Titre {
     grid-area: Titre;
     position: absolute;
-    z-index: 1;
-    background-color: #9ce0e400;
+    z-index: 2;
+    text-align: center;
+    background-color: #068f96ec;
 }
-
+#rectangle{
+    grid-area: Titre;
+    position: relative;
+    margin:auto;    
+    width:50%;
+    height:170px;
+    border-radius: 10px;
+    background: rgba(154, 168, 182, 0.856);
+    border-color: #ffffffa1;
+    border-width: 0.15em;
+    vertical-align: middle;
+    z-index: 1;
+}
 .footer {
     grid-area: footer;
     position: absolute;
