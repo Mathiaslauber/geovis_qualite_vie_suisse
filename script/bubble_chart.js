@@ -250,7 +250,20 @@ function bubble_chart() {
             .attr("cy", function(d) { return y(d.Auto_18); })
             .attr("r", function(d) { return z(d.pop); })
             .style("fill", function(d) { return myColor2(d.villes); })
-            .style("stroke", function(d) { return mycolor_agglo(d.cat2); })
+            //.style("stroke", function(d) { return mycolor_agglo(d.cat2); })
+            .style("fill-opacity", 0.8)
+            .attr("stroke", "grey")
+            .style("stroke-width", 1)
+            //.style('stroke-dasharray', '3,5')
+            .attr("stroke-dasharray", function(d) {
+                    if (d.cat2 === "Agglomeration") { //Threshold of 15
+                        return "4,9";
+                    } else {
+                        return "0,0"
+                    }
+                })
+            .style("stroke-linecap", "round")
+
             .on("mouseover", showTooltip)
             .on("mousemove", moveTooltip)
             .on("mouseleave", hideTooltip)
@@ -266,7 +279,7 @@ function bubble_chart() {
         function idled() { idleTimeout = null; }
         */
         // ---------------------------//
-        //       Nbr autos LEGENDES   //
+        //       LEGENDES              //
         // ---------------------------//
         // meme échelle que variable bubble z plus haut 
         var size = d3.scaleSqrt()
