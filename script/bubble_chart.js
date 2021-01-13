@@ -251,9 +251,9 @@ function bubble_chart() {
             .attr("r", function(d) { return z(d.pop); })
             .style("fill", function(d) { return myColor2(d.villes); })
             //.style("stroke", function(d) { return mycolor_agglo(d.cat2); })
-            .style("fill-opacity", 0.8)
+            .style("fill-opacity", 1)
             .attr("stroke", "grey")
-            .style("stroke-width", 1)
+            .style("stroke-width", 1.7)
             //.style('stroke-dasharray', '3,5')
             .attr("stroke-dasharray", function(d) {
                     if (d.cat2 === "Agglomeration") { //Threshold of 15
@@ -267,6 +267,7 @@ function bubble_chart() {
             .on("mouseover", showTooltip)
             .on("mousemove", moveTooltip)
             .on("mouseleave", hideTooltip)
+        
 
 
           // Add the brushing

@@ -199,6 +199,20 @@ div.tooltip_force {
     position: absolute;
     z-index: 1;
 }
+div.tooltip_graph1 {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 300px;
+    height: 40px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(24, 145, 30, 0);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 
 
 /*------------------------------*/
@@ -280,20 +294,6 @@ div.tooltip_clev {
     grid-area: graph1;
     position: absolute;
     z-index: 1;
-}
-
-div.tooltip_graph1 {
-    position: absolute;
-    z-index: 2;
-    text-align: left;
-    width: 300px;
-    height: 40px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: rgba(24, 145, 30, 0);
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
 }
 
 
