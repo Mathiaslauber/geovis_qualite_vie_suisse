@@ -17,15 +17,28 @@ body {
     letter-spacing: 0.03rem;
     line-height: 1;
     margin: 0 auto;
-    background-color: rgba(154, 168, 182, 0.733);
+    background-color: #25282c;
     /*background-color: rgba(0, 0, 0, 0.842);*/
 }
 
+/* PATH COLOR pour les graph d3 */
+.axiscolor path{
+    stroke: #cad4d6;
+  }
+  .axistick {
+    fill: #cad4d6;
+    font-size: smaller;
 
-/* TEXT GRAPH 2 */
+  }
+  .axiscolor line{
+    fill: #cad4d6;
+    /*#dce0e1*/
+
+  }
+/* TEXT city statistics */
 
 p {
-    color: #111;
+    color:#acadae;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 24px;

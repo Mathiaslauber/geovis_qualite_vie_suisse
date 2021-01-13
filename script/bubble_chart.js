@@ -27,7 +27,9 @@ function bubble_chart() {
         // ---------------------------//
         //     TITLE & AXIS & SCALE   //
         // ---------------------------//
-
+        var colortitle =  ["#acadae"]
+        var coloraxis =  ["#dce0e1"]
+        var colorlegend = ["#5d6164"]
 
         svg_graph1.append("text")
             .attr("x", margin_descr1.left - 50)
@@ -37,7 +39,9 @@ function bubble_chart() {
             .style("text-decoration", "bold")
             .html("Choix modal et bassin de population")
             .style("text-decoration", "italic")
+            .style("fill", colortitle)
             .style("letter-spacing", "-0.75px");
+
 
 
 
@@ -49,7 +53,7 @@ function bubble_chart() {
             .style("text-decoration", "bold")
             .text("* survoler les bulles ci-dessous")
             .style("font-size", "12px")
-            .style("fill", "grey")
+            .style("fill", colorlegend)
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.9px");
 
@@ -62,8 +66,15 @@ function bubble_chart() {
             .range([0, width]);
         var xAxis = svg_graph1.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).ticks(4));
-
+            .attr("class", "axiscolor")
+            .call(d3.axisBottom(x).ticks(4).tickSize(0))
+            .selectAll("text")
+            .attr("class", "axistick");
+            //.style("text-anchor", "end")
+            
+            //.style("fill", coloraxis);
+            //.style("stroke",coloraxis);
+          
         // Add X axis label:
         svg_graph1.append("text")
             .attr("text-anchor", "end")
@@ -72,6 +83,7 @@ function bubble_chart() {
             .text("[%]Part des pendulaires en transport public")
             //.attr("text-anchor", "right")
             .style("font-size", "14px")
+            .style("fill",colorlegend)
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px");
 
@@ -82,7 +94,10 @@ function bubble_chart() {
             .range([height, 50]);
         //.range([height - (height / 4), 0 + (height / 7)]);
         var yAxis = svg_graph1.append("g")
-            .call(d3.axisLeft(y).ticks(5));
+            .attr("class", "axiscolor")
+            .call(d3.axisLeft(y).ticks(5).tickSize(0).tickValues(["20","40","60","80","100"]))
+            .selectAll("text")
+            .attr("class", "axistick");
 
         // Add Y axis label:
         svg_graph1.append("text")
@@ -95,6 +110,7 @@ function bubble_chart() {
             .attr("transform", "rotate(-90)")
             .style("font-size", "14px")
             .style("text-decoration", "italic")
+            .style("fill",colorlegend)
             .style("letter-spacing", "-0.75px");
 
             
@@ -110,7 +126,7 @@ function bubble_chart() {
         // Add a scale for bubble size
         var z = d3.scaleSqrt()
             .domain([80000, 1400000])
-            .range([2, 30]);
+            .range([10, 40]);
 
         // Add a scale for bubble color
 
@@ -252,13 +268,62 @@ function bubble_chart() {
         // ---------------------------//
         //       Nbr autos LEGENDES   //
         // ---------------------------//
+        // meme échelle que variable bubble z plus haut 
+        var size = d3.scaleSqrt()
+            .domain([80000, 1400000]) // valeur max population à Zurich agglo
+            .range([10, 40]) // taille max du cercle selon la correction de Flannery
+
         // Add legend: circles
         var valuesToShow = [100000, 800000, 1400000]
         var xCircle = 80
-        var xLabel = 120
-        var yCircle = 390
-
+        var xLabel = 130
+        var yCircle = 350
+        
         svg_graph1
+        .selectAll("legend")
+        .data(valuesToShow)
+        .enter()
+        .append("circle")
+        .attr("cx", xCircle)
+        .attr("cy", function(d) { return yCircle - size(d) })
+        .attr("r", function(d) { return size(d) })
+        .style("fill", "none")
+        .style("stroke", colorlegend)
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.75px");
+
+    // Add legend: segments
+    svg_graph1
+        .selectAll("legend")
+        .data(valuesToShow)
+        .enter()
+        .append("line")
+        .attr('x1', function(d) { return xCircle })
+        .attr('x2', xLabel)
+        .attr('y1', function(d) { return yCircle - size(d) * 2 })
+        .attr('y2', function(d) { return yCircle - size(d) * 2 })
+        .style('stroke-dasharray', ('2,2'))
+        .style('stroke-dasharray', ('2,2'))
+        .style("stroke", colorlegend)
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.75px");
+
+    // Add legend: labels
+    svg_graph1
+        .selectAll("legend")
+        .data(valuesToShow)
+        .enter()
+        .append("text")
+        .attr('x', xLabel + 5)
+        .attr('y', function(d) { return yCircle - size(d) * 2 })
+        .text(function(d) { return d3.format(",")(d) })
+        .style("font-size", 10)
+        .attr('alignment-baseline', 'middle')
+        .style("fill", colorlegend)
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.75px");
+
+        /*svg_graph1
             .selectAll("legend")
             .data(valuesToShow)
             .enter()
@@ -277,10 +342,12 @@ function bubble_chart() {
             .append("line")
             .attr('x1', function(d) { return xCircle + z(d) })
             .attr('x2', xLabel)
-            .attr('y1', function(d) { return yCircle - 100 - z(d) })
+            .attr('y1', function(d) { return yCircle -100 - z(d) })
             .attr('y2', function(d) { return yCircle - 100 - z(d) })
-            .attr('stroke', 'black')
             .style('stroke-dasharray', ('2,2'))
+            .style("stroke", colorlegend)
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.75px");
 
         // Add legend: labels
         svg_graph1
@@ -291,16 +358,20 @@ function bubble_chart() {
             .attr('x', xLabel)
             .attr('y', function(d) { return yCircle - 100 - z(d) })
             .text(function(d) { return d })
-            .style("font-size", 10)
+            .style("font-size", 11)
             .attr('alignment-baseline', 'middle')
+            .style("fill", colorlegend)
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.75px");*/
 
         // Legend title
         svg_graph1.append("text")
-            .attr('x', xCircle - 70)
-            .attr("y", yCircle - 100 + 20)
-            .text("Nombre d'autos pour 1000 habitants)")
-            .attr("text-anchor", "left")
+            .attr('x', xCircle/2)
+            .attr("y", yCircle - 97)
+            .text("Nombre d'habitants")
+            .attr("text-anchor", "center")
             .style("font-size", "12px")
+            .style("fill", colorlegend)
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px");
 
@@ -356,7 +427,7 @@ function bubble_chart() {
             .data(allgroups)
             .enter()
             .append("circle")
-            .attr("cx", 550)
+            .attr("cx", 300)
             .attr("cy", function(d, i) { return 30 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
             .attr("r", 7)
             .style("fill", function(d) { return mycolor_agglo(d) })
@@ -370,7 +441,7 @@ function bubble_chart() {
             .data(allgroups)
             .enter()
             .append("text")
-            .attr("x", 550 + size * .8)
+            .attr("x", 300 + size * .8)
             .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return mycolor_agglo(d) })
             .text(function(d) { return d })
