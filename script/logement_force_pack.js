@@ -216,6 +216,8 @@ function logement_force_packing() {
         //.range(["#000", "#7A7A7A"]);
         .range(["1,3", "0,0"]);
 
+
+        // CERCLES //
     var size = 25
     var allgroups = ["Ville-centre", "Agglomeration"]
     svg_graph3.selectAll("myrect2")
@@ -232,6 +234,10 @@ function logement_force_packing() {
         .style("stroke-linecap", "round")
         //.style('stroke-dasharray', '3,5')
         // Add labels beside legend dots
+
+
+        // LABELS //
+        
     svg_graph3.selectAll("mylabels2")
         .data(allgroups)
         .enter()

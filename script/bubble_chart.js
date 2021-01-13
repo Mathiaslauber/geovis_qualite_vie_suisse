@@ -390,7 +390,7 @@ function bubble_chart() {
 
 
         // ---------------------------//
-        //     Légendes de catégories //
+        //     Légendes de catégories des VILLEs //
         // ---------------------------//
         // TOOLTIP VILLES UNE PAR UNE 
         // Add one dot in the legend for each name.
@@ -431,8 +431,16 @@ function bubble_chart() {
 
 
 
+        // ---------------------------//
+        //     Légendes de catégories des agglos et villes-centre //
+        // ---------------------------//
 
-        // HOVER VILLES ET AGGLO 
+        
+        var mycolor_dash = d3.scaleOrdinal()
+        .domain(["Agglomeration", "Ville-centre"])
+        //.range(["#000", "#7A7A7A"]);
+        .range(["1,3", "0,0"]);//specs trait-tillés
+
         // Add one dot in the legend for each name.
         var size = 20
         var allgroups = ["Ville-centre", "Agglomeration"]
@@ -442,8 +450,13 @@ function bubble_chart() {
             .append("circle")
             .attr("cx", 300)
             .attr("cy", function(d, i) { return 30 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
-            .attr("r", 7)
-            .style("fill", function(d) { return mycolor_agglo(d) })
+            .attr("r", 11)
+            //.style("fill", function(d) { return mycolor_agglo(d) })
+            .style("stroke-dasharray", function(d) { return mycolor_dash(d) })
+            .attr("stroke", "grey")
+            .style("fill", "none")
+            .style("stroke-width", 1.5)
+            .style("stroke-linecap", "round")
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight)
 
@@ -456,7 +469,7 @@ function bubble_chart() {
             .append("text")
             .attr("x", 300 + size * .8)
             .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
-            .style("fill", function(d) { return mycolor_agglo(d) })
+            .style("fill", colorlegend)
             .text(function(d) { return d })
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
