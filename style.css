@@ -434,7 +434,7 @@ div.infobox {
 /*---------------------------------------------------------*/
 
 .grid-container * {
-    border: 0.25rem solid #bea41404;
+    border: 0.25rem solid #bea41418;
     background: #1f1fe200;
     position: relative;
 }
@@ -445,7 +445,7 @@ div.infobox {
 .grid-container *:after {
     content: attr(class);
     position: absolute;
-    top: 0;
+    top: 0; 
     left: 0;
 }
 */
