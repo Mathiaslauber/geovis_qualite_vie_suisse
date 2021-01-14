@@ -101,7 +101,7 @@ a:hover {
 /*----------H1----------------*/
 
 h1 {
-    color: #070709;
+    color: var(--color_title);
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 45px;
     font-weight: bolder;
@@ -116,7 +116,7 @@ h1 {
 /*---------H2-----------------*/
 
 h2 {
-    color: #070709;
+    color: var(--color_title);
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 27px;
     font-weight: normal;
@@ -131,7 +131,7 @@ h2 {
 /*----------H3----------------*/
 
 h3 {
-    color: #070709;
+    color: var(--color_legend);
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: normal;
@@ -303,13 +303,28 @@ div.tooltip_clev {
 }
 
 
-/* */
+/*-----------------CARTE CHOROPLETHE------------------------*/
 
 .carto2 {
     grid-area: carto2;
     position: absolute;
     z-index: 1;
 }
+.titremap {
+    color: var(--color_title);
+    font-family: 'Open Sans';
+    font-size: 20px;
+    text-decoration: bold;
+    font-weight: normal;
+    line-height: 15px;
+    margin: 0 0 20px;
+    padding: 0 15px 20px;
+    text-align: center;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+
 
 #mapdiv {
     position: absolute;
