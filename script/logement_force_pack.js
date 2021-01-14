@@ -1,6 +1,6 @@
 //---------------À FAIRE-----------------//
-// []  
-// [] 
+// [] replacer les titres  
+// [] changer la couleur des titres et des légendes
 // []   
 // [] 
 // [] 
@@ -12,8 +12,11 @@ function logement_force_packing() {
     var margin_graph3 = { top: 50, right: 20, bottom: 30, left: 30 },
         width = sizeX - margin_graph3.left - margin_graph3.right,
         height = sizeY - margin_graph3.top - margin_graph3.bottom;
+    // style couleurs 
 
-
+        var colortitle =  ["#acadae"]
+        var coloraxis =  ["#dce0e1"]
+        var colorlegend = ["#5d6164"]
     // append the svg object to the body of the page
     var svg_graph3 = d3.select("#graph3")
         .append("svg")
@@ -34,8 +37,9 @@ function logement_force_packing() {
                 .attr("x", margin_graph3.left + 125)
                 .attr("y", 15 - (margin_graph3.top / 1.3))
                 .attr("text-anchor", "middle")
-                .style("font-size", "22px")
+                .style("font-size", "19px")
                 .style("text-decoration", "bold")
+                .style("fill", colortitle)
                 .html("Logement : Surface habitable en [m2]")
                 .style("text-decoration", "italic")
                 .style("letter-spacing", "-0.75px");
@@ -46,11 +50,10 @@ function logement_force_packing() {
                 .attr("x", margin_graph3.left - 60)
                 .attr("y", margin_graph3.top - 57)
                 .attr("text-anchor", "left")
-                .style("font-size", "10px")
+                .style("font-size", "11px")
                 .style("text-decoration", "bold")
-                .text("* Il est possible de déplacer les cercles, et d'obtenir des infos en les survolant")
-                .style("font-size", "12px")
-                .style("fill", "grey")
+                .text("* Il est possible de réorganiser les cercles et d'avoir des infobulles")
+                .style("fill", colorlegend)
                 .style("text-decoration", "italic")
                 .style("letter-spacing", "-0.9px");
 
@@ -64,15 +67,15 @@ function logement_force_packing() {
             // Legend manuelle 
 
             //svg_graph3.append("text").attr("x", 5).attr("y", 5).style("font-size", "20px").text("Surface moyenne habitable par personne")
-            svg_graph3.append("circle").attr("cx", 15).attr("cy", 50).attr("r", 40).style("fill", "none").style("stroke", "#000")
-            svg_graph3.append("circle").attr("cx", 15).attr("cy", 75).attr("r", 15).style("fill", "none").style("stroke", "#000")
+            svg_graph3.append("circle").attr("cx", 15).attr("cy", 50).attr("r", 40).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("circle").attr("cx", 15).attr("cy", 75).attr("r", 15).style("fill", "none").style("stroke", colorlegend)
 
 
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 65).attr("y2", 60).style("fill", "none").style("stroke", "#000")
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 65).attr("y2", 10).style("fill", "none").style("stroke", "#000")
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 65).attr("y2", 60).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 65).attr("y2", 10).style("fill", "none").style("stroke", colorlegend)
 
-            svg_graph3.append("text").attr("x", 70).attr("y", 60).text("35 m2").style("font-size", "14px").attr("alignment-baseline", "middle").style("letter-spacing", "-0.75px")
-            svg_graph3.append("text").attr("x", 70).attr("y", 10).text("50 m2").style("font-size", "154x").attr("alignment-baseline", "middle").style("letter-spacing", "-0.75px")
+            svg_graph3.append("text").attr("x", 70).attr("y", 60).text("35 m2").style("font-size", "14px").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
+            svg_graph3.append("text").attr("x", 70).attr("y", 10).text("50 m2").style("font-size", "154x").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
                 // Size scale for countries
                 //scalePow
                 //More included for completeness, rather than practical usefulness, the power scale interpolates using a power (y = m * x^k + b) function. The exponent k is set using .exponent():
@@ -244,7 +247,7 @@ function logement_force_packing() {
         .append("text")
         .attr("x", 200 + size * .8)
         .attr("y", function(d, i) { return 0 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
-        .style("fill", function(d) { return mycolor_dash(d) })
+        .style("fill", colorlegend)
         .text(function(d) { return d })
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")

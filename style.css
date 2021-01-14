@@ -9,6 +9,11 @@ body,
     gap: 40px 40px;
     grid-template-areas: "Titre Titre Titre Titre" "descriptif1 descriptif1 . graph1" "graph2 graph3 . carto1" "carto2 carto2 carto2 carto2" "footer footer footer footer";
 }
+:root{
+    --color_title: #acadae;
+    --color_legend: #dce0e1;
+    --color_axis: #5d6164;
+}
 
 body {
     color: rgba(98, 165, 173, 0.959);
@@ -27,7 +32,8 @@ body {
   }
   .axistick {
     fill: #cad4d6;
-    font-size: smaller;
+    font-size: small;
+    font-family: "comfortaa";
 
   }
   .axiscolor line{
@@ -39,8 +45,8 @@ body {
 
 p {
     color:#acadae;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-family: 'comfortaa', sans-serif;
+    font-size: 15px;
     line-height: 24px;
     margin: 0 0 48px 20px;
     margin-bottom: 1.75em;
@@ -138,7 +144,7 @@ h3 {
 }
 
 h4 {
-    color: #070709;
+    color: var(--color_title);
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: normal;

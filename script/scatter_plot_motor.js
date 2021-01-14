@@ -16,7 +16,9 @@ function scatter_plot_motor() {
 
     //Read the data
     d3.csv("data/scatter_connected_tx_motor.csv", function(data) {
-
+        var colortitle =  ["#acadae"]
+        var coloraxis =  ["#dce0e1"]
+        var colorlegend = ["#5d6164"]
         // List of groups (here I have one group per column)
 
         // var allGroup = ["Zurich_ville", "Zurich_agglo", "Berne_ville"]
@@ -54,6 +56,7 @@ function scatter_plot_motor() {
             .style("text-decoration", "bold")
             .text("Evolution de la motorisation")
             .style("text-decoration", "italic")
+            .style("fill", colortitle)
             .style("letter-spacing", "-0.75px");
 
 
@@ -63,6 +66,7 @@ function scatter_plot_motor() {
             .attr("text-anchor", "middle")
             .style("font-size", "14px")
             .style("text-decoration", "italic")
+            .style("fill", colortitle)
             .text("Nombre de voitures pour 1000 hab.");
 
 
@@ -70,12 +74,13 @@ function scatter_plot_motor() {
             .attr("x", "70%")
             .attr("y", -10)
             .attr("text-anchor", "left")
-            .style("font-size", "20px")
-            .style("text-decoration", "bold")
-            .text("Surbrilliance")
-            .style("fill", "grey")
+            .style("font-size", "12px")
+            .style("fill", colorlegend)
             .style("text-decoration", "italic")
-            .style("letter-spacing", "-0.9px");
+            .style("letter-spacing", "-0.9px")
+            //.style("text-decoration", "bold")
+            .text("à cocher")
+            .style("fill", colorlegend);
 
         // Add X axis --> it is a date format
 
@@ -87,22 +92,24 @@ function scatter_plot_motor() {
         xAxisGenerator.tickValues([1, 2, 3, 4, 5, 6, 7]);
         let tickLabels = ['2011', '2012', '2014', '2015', '2016', '2017', '2018'];
         xAxisGenerator.tickFormat((d, i) => tickLabels[i]);
-        xAxisGenerator.tickSize(-10)
+        xAxisGenerator.tickSize(0)
             //xAxisGenerator.tickLine("stroke-dasharray", "2,2");
 
 
 
         let xAxis = svg_motor.append("g")
-            .call(xAxisGenerator);
+            .call(xAxisGenerator)
+            .attr("class", "axiscolor");
         //.ticks(7)          
         xAxis.attr("transform", "translate(0," + height + ")");
         xAxis.selectAll(".tick text")
             .attr("y", +10)
-            .attr("font-size", "14")
-            .attr("font-family", "Comfortaa")
-
-
-
+            //.attr("font-size", "14")
+            //.attr("font-family", "Comfortaa")
+            .attr("class", "axiscolor");
+            
+        xAxis.selectAll("text")
+        .attr("class", "axistick");
 
         /*   
            var x = d3.scaleLinear()
@@ -118,12 +125,14 @@ function scatter_plot_motor() {
             .domain([200, 650])
             .range([height, 0])
         var yAxis = svg_motor.append("g")
-            .call(d3.axisLeft(y).tickValues(["300", "450", "600"]));
+            .call(d3.axisLeft(y).tickValues(["300", "450", "600"]).tickSize(0))
+            .attr("class", "axiscolor");
 
 
         yAxis.selectAll(".tick text")
-            .attr("font-size", "12")
-            .attr("font-family", "Comfortaa")
+            //.attr("font-size", "12")
+            //.attr("font-family", "Comfortaa")
+            .attr("class", "axistick");
 
 
         // Add a clipPath: everything out of this area won't be drawn.
