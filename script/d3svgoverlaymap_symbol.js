@@ -21,10 +21,11 @@ function map_symbol() {
 
     var map = L.map("mapdiv", { center: [46.6, 7.95], zoom: 8 });
     map.setMaxBounds([
-        [45.989329, 5.656842],
+        [45.989329, 5.98],
         [47.413155, 10.538028]
     ]);
     map.setMinZoom(8);
+    
 
 
     // Définir les différentes couches de base:
@@ -248,8 +249,8 @@ function map_symbol() {
 
     // set the dimensions and margins of the graph
     let margin_map = { top: 0, right: 0, bottom: 0, left: 5 },
-        width = 750 - margin_map.left - margin_map.right,
-        height = 650 - margin_map.top - margin_map.bottom;
+        width = 900 - margin_map.left - margin_map.right,
+        height = 630 - margin_map.top - margin_map.bottom;
 
     // append the svg object to the body of the page
     var svg_chorop = d3.select("#sidebar")
