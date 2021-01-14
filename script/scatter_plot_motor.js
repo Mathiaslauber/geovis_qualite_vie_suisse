@@ -243,6 +243,7 @@ function scatter_plot_motor() {
             .attr('font-family', 'FontAwesome')
             .attr('font-size', function(d) { return d.size+'em'} )
             .text(function(d) { return '\uf245' })
+            .style( "vertical-align","middle")
             .attr('x', 460)
             .attr('y', function(d, i) { return 10 + i * 40 })
             .attr("height", 30)
