@@ -507,7 +507,7 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES
+/*CE QUI NOMME LES CASES*/
 
 .grid-container *:after {
     content: attr(class);
@@ -515,7 +515,7 @@ div.infobox {
     top: 0; 
     left: 0;
 }
-*/
+
 
 
 /*

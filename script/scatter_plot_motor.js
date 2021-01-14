@@ -227,7 +227,10 @@ function scatter_plot_motor() {
              .on("mouseover", highlight1)
              .on("mouseleave", noHighlight1);*/
 
-        // Add a legend (interactive)
+    
+
+
+
         // CARRES LEGENDES -------------------------------------------------------------
 
         svg_motor
@@ -236,7 +239,10 @@ function scatter_plot_motor() {
             //.data(allgroups)
             .enter()
             .append('g')
-            .append("rect")
+            .append('text')
+            .attr('font-family', 'FontAwesome')
+            .attr('font-size', function(d) { return d.size+'em'} )
+            .text(function(d) { return '\uf245' })
             .attr('x', 460)
             .attr('y', function(d, i) { return 10 + i * 40 })
             .attr("height", 30)
