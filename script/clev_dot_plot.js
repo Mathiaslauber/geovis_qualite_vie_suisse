@@ -58,6 +58,7 @@ function clev_dot_plot() {
         .style("font-size", "22px")
         .style("text-decoration", "italic")
         .style("letter-spacing", "-0.75px")
+        .style("fill",colortitle)
 
 
 

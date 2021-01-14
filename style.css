@@ -53,6 +53,7 @@ p {
     margin: 0 0 48px 20px;
     margin-bottom: 1.75em;
     text-align: justify;
+    letter-spacing: -0.3px;
 }
 
 r {
@@ -120,7 +121,7 @@ h1 {
 h2 {
     color: var(--color_title);
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 27px;
+    font-size: 30px;
     font-weight: normal;
     line-height: 30px;
     margin: 5px 0 24px;
@@ -157,6 +158,20 @@ h4 {
     z-index: 1;
     text-transform: uppercase;
 }
+h5 {
+        color: var(--color_title);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 10px;
+        font-weight:lighter;
+        font-style: italic;
+        line-height: 15px;
+        margin: 0px 0 24px;
+        padding: 0px;
+        text-align: left;
+        z-index: 1;
+        text-transform: uppercase;
+    }
+
 
 line {
     border-top: 1px solid #111;
@@ -335,6 +350,7 @@ div.tooltip_clev {
     left: 5px;
     width: 900px;
     height: 630px;
+    padding: 5px;
     background-color: #696969;
     border: 3px solid  var(--color_title);
     border-radius: 5px;
@@ -362,13 +378,14 @@ div.sidebar {
     top: 20px;
     left: calc(930px);
     width: 430px;
-    height: calc(650px);
+    height: calc(630px);
     /*min-height: 90%;
     bottom: 10%;*/
     background-color: rgba(17, 17, 17, 0.183);
     border-radius: 5px;
     border: 5px solid var(--color_title);
     padding: 5px;
+    margin-bottom: 10px;
     border-style: outset;
     border-left:unset;
     border-top: unset;
@@ -389,7 +406,7 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(164, 31, 31, 0);
+    background-color: rgba(196, 11, 11, 0);
 }
 
 th[scope="col"] {
@@ -409,7 +426,11 @@ th[scope="row"] {
     border-bottom: unset;
     border-top: unset;
 }
-
+/* LE TEXTE DANS LE TABLEAU*/
+td[scope="stat"] {
+    background-color: #219edd00;
+    color: var(--color_axis);
+}
 table {
     border-collapse: collapse;
     border: 2px solid #1c87c9;
@@ -425,15 +446,16 @@ caption {
     padding: 15px;
     caption-side: bottom;
     text-align: middle;
-    font-size: small;
+    font-size: 11px;
     font-weight: lighter;    
 }
 
-
 div.infobox {
     font: "Comfortaa";
-    font-size: small;
+    font-size: smaller;
     color: #585858;
+    padding-top: 10px;
+    line-height: 1px;
 }
 
 
@@ -479,7 +501,7 @@ div.infobox {
 /*---------------------------------------------------------*/
 
 .grid-container * {
-    border: 0.25rem dotted #bea414cb;
+    border: 0.25rem solid #bea41400;
     background: #1f1fe200;
     position: relative;
 }

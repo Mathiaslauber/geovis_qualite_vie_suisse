@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
+        <!-- Librairies d'icones-->
+    <script src="https://kit.fontawesome.com/5c3f18a241.js" crossorigin="anonymous"></script>
     <!--script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="script/require.js"></script-->
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -147,7 +149,7 @@
                 
                 <table>
 
-                    <caption>*Moyenne entre 2014-2019</caption>
+                    <caption>*Moyenne entre 2014-2019, pour les 8 villes/agglomérations</caption>
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">agglomération</th>
@@ -155,22 +157,22 @@
                     </tr>
 
                     <tr>
-                        <th scope="row"> <i>*taux [%]</i> logements vacants*</th>
-                        <td>1.83</td>
-                        <td>1.79</td>
+                        <th scope="row"> <i>*taux [%]</i> logements vacants</th>
+                        <td scope="stat">1.83</td>
+                        <td scope="stat">1.79</td>
                     </tr>
                     <tr>
-                        <th scope="row"><i>*Décompte</i> logements</th>
-                        <td>301'247</td>
-                        <td>294'620</td>
+                        <th scope="row"><i>*Total de</i> logements</th>
+                        <td scope="stat">301'247</td>
+                        <td scope="stat">294'620</td>
                     </tr>
 
                 </table>
 
 
-                <div class="infobox">
-                    <p><i>Passez sur un symbole pour obtenir le résultat détaillé.</i></p>
-                    <p><i>Zoom avec la souris pour apercevoir les symbôles colorés</i></p>
+                <div id= "infobox" class="infobox">
+                <h5><i class="fas fa-mouse-pointer fa-2x"></i><i>Infobulle avec résultat détaillé.</i></h5>
+                <h5><i class="fas fa-mouse-pointer fa-2x"></i><i>Emphase des cercles en passant la souris sur la légende.</i></h5>
                 </div>
             </div>
         </div>

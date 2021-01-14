@@ -319,16 +319,17 @@ function map_symbol() {
             .text(function(d) { return d })
             .style("font-size", "16px")
             .attr("text-anchor", "left")
+            .style("fill", colorlegend)
             .style("alignment-baseline", "middle")
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight)
             //.on("mouseover", highlight)
             //.on("mouseleave", noHighlight)
 
-
-        svg_chorop.append("text").attr("x", 35).attr("y", 250).text("min : 0.1").style("font-size", "12px").attr("alignment-baseline", "middle")
-        svg_chorop.append("text").attr("x", 0).attr("y", 15).text("[%] de logements vacants").style("font-size", "19px").attr("alignment-baseline", "middle")
-        svg_chorop.append("text").attr("x", 0).attr("y", 35).text("moyenne entre 2014-2019").style("font-size", "14px").attr("alignment-baseline", "middle")
+          
+        svg_chorop.append("text").attr("x", 35).attr("y", 250).text("min : 0.1").style("fill", colorlegend).style("font-size", "12px").attr("alignment-baseline", "middle")
+        svg_chorop.append("text").attr("x", 0).attr("y", 15).text("[%] de logements vacants").style("fill", colortitle).style("font-size", "19px").attr("alignment-baseline", "middle")
+        svg_chorop.append("text").attr("x", 0).attr("y", 35).text("moyenne entre 2014-2019").style("fill", colorlegend).style("font-size", "14px").attr("alignment-baseline", "middle")
             // ------------------------------------------------------------//
             //      CERCLE TAILLE : LEGENDES NOMBRE DE LOGEMENTS TOTAUX   //
             // ----------------------------------------------------------//
@@ -341,8 +342,8 @@ function map_symbol() {
 
         // Add legend: circles
         var valuesToShow = [50000, 150000, 300000, 600000]
-        var xCircle = 221
-        var xLabel = 291
+        var xCircle = 290
+        var xLabel = 350
         var yCircle = 175
         svg_chorop
             .selectAll("legend")
@@ -353,7 +354,7 @@ function map_symbol() {
             .attr("cy", function(d) { return yCircle - size(d) })
             .attr("r", function(d) { return size(d) })
             .style("fill", "none")
-            .attr("stroke", "black")
+            .attr("stroke", colorlegend)
 
         // Add legend: segments
         svg_chorop
@@ -365,7 +366,7 @@ function map_symbol() {
             .attr('x2', xLabel)
             .attr('y1', function(d) { return yCircle - size(d) * 2 })
             .attr('y2', function(d) { return yCircle - size(d) * 2 })
-            .attr('stroke', 'black')
+            .attr('stroke', colorlegend)
             .style('stroke-dasharray', ('2,2'))
 
         // Add legend: labels
@@ -377,25 +378,30 @@ function map_symbol() {
             .attr('x', xLabel + 5)
             .attr('y', function(d) { return yCircle - size(d) * 2 })
             .text(function(d) { return d3.format(",")(d) })
-            .style("font-size", 10)
+            .style("font-size", 12)
+            .style("fill", colorlegend)
             .attr('alignment-baseline', 'middle')
 
         // Legend title
         svg_chorop.append("text")
-            .attr('x', xCircle - 50)
+            .attr('x', xCircle + 15)
             .attr("y", yCircle + 25)
             .text("Nombre de logements")
-            .attr("text-anchor", "right")
+            .attr("text-anchor", "middle")
             .attr("font-size", "17")
+            .style("fill", colortitle)
+
 
         svg_chorop.append("text")
-            .attr('x', xCircle - 50)
+            .attr('x', xCircle + 40)
             .attr("y", yCircle + 45)
-            .text("moyenne entre 2014-2019")
-            .attr("text-anchor", "right")
+            .text("*moyenne entre 2014-2019")
+            .attr("text-anchor", "middle")
             .attr("font-style", "italic")
-            .attr("font-size", "14px")
-
+            .attr("font-size", "12px")
+            .style("fill", colorlegend)
+            .style("text-decoration", "italic")
+            .style("letter-spacing", "-0.9px");
 
 
 
