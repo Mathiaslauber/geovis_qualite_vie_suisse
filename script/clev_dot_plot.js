@@ -245,7 +245,7 @@ function clev_dot_plot() {
             .attr("cx", function(d) { return x(d.r2014); })
             .attr("cy", function(d) { return y(d.villes); })
             .attr("r", "8")
-            .style("fill", "#2e3237")
+            .style("fill", "#dce0e1")
             .style("opacity", "0.9")
             //.style("fill", function(d) { return myColor(d.villes); })
             .on("mouseover", mouseover)

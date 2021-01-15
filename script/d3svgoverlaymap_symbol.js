@@ -347,7 +347,7 @@ function map_symbol() {
         var xLabel = 350
         var yCircle = 175
         svg_chorop
-            .selectAll("legend")
+            .selectAll("mycircles")
             .data(valuesToShow)
             .enter()
             .append("circle")
@@ -356,10 +356,11 @@ function map_symbol() {
             .attr("r", function(d) { return size(d) })
             .style("fill", "none")
             .attr("stroke", colorlegend)
+       
 
         // Add legend: segments
         svg_chorop
-            .selectAll("legend")
+            .selectAll("mysegments")
             .data(valuesToShow)
             .enter()
             .append("line")
@@ -369,10 +370,11 @@ function map_symbol() {
             .attr('y2', function(d) { return yCircle - size(d) * 2 })
             .attr('stroke', colorlegend)
             .style('stroke-dasharray', ('2,2'))
+           
 
         // Add legend: labels
         svg_chorop
-            .selectAll("legend")
+            .selectAll("mylabels")
             .data(valuesToShow)
             .enter()
             .append("text")
@@ -382,6 +384,7 @@ function map_symbol() {
             .style("font-size", 12)
             .style("fill", colorlegend)
             .attr('alignment-baseline', 'middle')
+        
 
         // Legend title
         svg_chorop.append("text")
