@@ -11,3 +11,5 @@ Ce projet comporte des visualisations, assemblées en dashboard, permettant de c
 ```
 ![Alt text](images/2.png?raw=true "Optional Title")
 ![Alt text](images/1.png?raw=true "Optional Title")
+![Alt text](https://github.com/Mathiaslauber/geovis_qualite_vie_suisse/blob/main/images/1.PNG "Optional title")
+![Alt text](https://github.com/Mathiaslauber/geovis_qualite_vie_suisse/blob/main/images/2.PNG "Optional title")
