@@ -356,7 +356,9 @@ function clev_dot_plot() {
                 .attr("cx", function(d) { return x(d.value); })
                 .attr("cy", function(d) { return y(d.villes); })
                 .style("fill", function(d) { return myColor(d.villes); })
-
+          
+      
+        
 
         }
         // When the button is changed, run the updateChart function
@@ -368,6 +370,32 @@ function clev_dot_plot() {
 
 
         })
+        var mouseover = function(d) {
+            tooltip
+                .transition()
+                .duration(200)
+            tooltip
+                .style("opacity", 1)
+                //.html("<br>Lieu : " + d.villes +".</br>" + " <br> La distance est de : " +"<br>"+d.dist_moy_14_19 +"</br>" + " [km]</br> " + "<br> La durée est de : " + d.duree_moy_14_18 + " [min]</br>")
+                .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>distance[km]</th>" + "<th>durée[min]</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.dist_moy_14_19 + "</td>" + "<td>" + d.duree_moy_14_18 + "</td>" + "</tr>" + "</tbody>" + "</table>")
+                .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("top", (d3.mouse(this)[1]) + "px")
+
+        }
+
+        var mousemove = function(d) {
+            tooltip
+                .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("top", (d3.mouse(this)[1]) + "px")
+        }
+
+        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+        var mouseleave = function(d) {
+            tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0)
+        }
 
 
     })

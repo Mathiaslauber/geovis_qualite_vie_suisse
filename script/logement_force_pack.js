@@ -1,6 +1,6 @@
 //---------------À FAIRE-----------------//
-// [] replacer les titres  
-// [] changer la couleur des titres et des légendes
+// [x] replacer les titres  
+// [x] changer la couleur des titres et des légendes
 // []   
 // [] 
 // [] 
@@ -34,13 +34,13 @@ function logement_force_packing() {
             // ---------------------- TITRE ---------------------//
 
             svg_graph3.append("text")
-                .attr("x", margin_graph3.left + 125)
+                .attr("x", margin_graph3.left + 140)
                 .attr("y", 15 - (margin_graph3.top / 1.3))
                 .attr("text-anchor", "middle")
                 .style("font-size", "19px")
                 .style("text-decoration", "bold")
                 .style("fill", colortitle)
-                .html("Logement : Surface habitable en [m2]")
+                .html("Logement : Surface en [m2] par habitant")
                 .style("text-decoration", "italic")
                 .style("letter-spacing", "-0.75px");
 

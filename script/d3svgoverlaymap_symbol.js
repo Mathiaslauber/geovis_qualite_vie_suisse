@@ -2,7 +2,7 @@
 //------------CE QU'IL RESTE À FAIRE : 
 //  [x] faire un hover effect avec la légende couleur
 //  [x] faire un tooltip éventuellement avec graph (tableau, actuellement)
-//  [] mettre les % de la légende à l'arrête de sa box
+//  [x] mettre les % de la légende à l'arrête de sa box
 //  [x] faire un tableau dans le tooltip
 //
 //
