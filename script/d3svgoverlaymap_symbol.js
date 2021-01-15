@@ -85,7 +85,7 @@ function map_symbol() {
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip_map")
-        .style("background-color", "grey")
+        .style("background-color", "#bdc2ca")
         .style("border-radius", "5px")
         .style("padding", "10px")
         .style("color", "white")
@@ -329,6 +329,7 @@ function map_symbol() {
           
         svg_chorop.append("text").attr("x", 35).attr("y", 250).text("min : 0.1").style("fill", colorlegend).style("font-size", "12px").attr("alignment-baseline", "middle")
         svg_chorop.append("text").attr("x", 0).attr("y", 15).text("[%] de logements vacants").style("fill", colortitle).style("font-size", "19px").attr("alignment-baseline", "middle")
+        svg_chorop.append("text").attr("x", 290).attr("y", 15).style("fill", colortitle).style("font-size", "22px").attr("alignment-baseline", "middle").attr('font-family', 'FontAwesome').attr('font-size', '20px').text(function(d) { return '\uf8cc' })
         svg_chorop.append("text").attr("x", 0).attr("y", 35).text("moyenne entre 2014-2019").style("fill", colorlegend).style("font-size", "14px").attr("alignment-baseline", "middle")
             // ------------------------------------------------------------//
             //      CERCLE TAILLE : LEGENDES NOMBRE DE LOGEMENTS TOTAUX   //

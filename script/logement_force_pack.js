@@ -50,7 +50,7 @@ function logement_force_packing() {
                 .attr("x", margin_graph3.left - 60)
                 .attr("y", margin_graph3.top - 57)
                 .attr("text-anchor", "left")
-                .style("font-size", "11px")
+                .style("font-size", "12px")
                 .style("text-decoration", "bold")
                 .text("* Il est possible de réorganiser les cercles et d'avoir des infobulles")
                 .style("fill", colorlegend)
@@ -96,7 +96,7 @@ function logement_force_packing() {
                 .attr("width", "100px")
                 .attr("height", "100px")
                 .attr("class", "tooltip_force")
-                .style("background-color", "#F3F4F6")
+                .style("background-color", "#bdc2ca")
                 .style("border", "none")
                 //.style("border-width", "2px")
                 .style("border-radius", "5px")
@@ -113,13 +113,15 @@ function logement_force_packing() {
                     .duration(200)
                 Tooltip
                     .style("opacity", 1)
-                    .html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
+                    //.html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
+                    .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>m2 en 2014</th>" + "<th>m2 en 2019</th>" + "<th>tendance en m2</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.X2014 + "</td>" + "<td>" + d.X2019 + "</td>" + "<td>" + d.tendance + "</td>" + "</tr>" + "</tbody>" + "</table>")
                     .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                     .style("top", (d3.mouse(this)[1]) + "px")
             }
             var mousemove = function(d) {
                 Tooltip
-                    .html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
+                    //.html(d.indicateurs + ", pour la ville de: " + d.villes + ": " + d.X2019 + " m2 ")
+                    .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>m2 en 2014</th>" + "<th>m2 en 2019</th>" + "<th>tendance en m2</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.X2014 + "</td>" + "<td>" + d.X2019 + "</td>" + "<td>" + d.tendance + "</td>" + "</tr>" + "</tbody>" + "</table>")
                     .style("left", (d3.mouse(this)[0] + 70) + "px")
                     .style("top", (d3.mouse(this)[1]) + "px")
             }

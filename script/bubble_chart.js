@@ -8,7 +8,7 @@
 
 function bubble_chart() {
     // set the dimensions and margins of the graph
-    let margin_descr1 = { top: 30, right: 20, bottom: 20, left: 45 },
+    let margin_descr1 = { top: 30, right: 20, bottom: 15, left: 45 },
         width = 646 - margin_descr1.left - margin_descr1.right,
         height = 400 - margin_descr1.top - margin_descr1.bottom;
 
@@ -51,7 +51,7 @@ function bubble_chart() {
             .attr("text-anchor", "left")
             .style("font-size", "12px")
             .style("text-decoration", "bold")
-            .text("* survoler les bulles ci-dessous")
+            .text("* moyenne des années 2012-2018 : info-bulles ci-dessous")
             .style("font-size", "12px")
             .style("fill", colorlegend)
             .style("text-decoration", "italic")
@@ -110,7 +110,7 @@ function bubble_chart() {
             .style("font-size", "14px")
             .style("text-decoration", "italic")
             .style("fill",colorlegend)
-            .style("letter-spacing", "-0.75px");
+            .style("letter-spacing", "-0.5px");
 
             
         //------CLIP PATH POUR LE ZOOM------//
@@ -153,13 +153,13 @@ function bubble_chart() {
         var tooltip = d3.select("#descriptif1")
             .append("div")
             .style("opacity", 0)
+            .attr("class","tooltip_graph1")
             .attr("width", "100px")
             .attr("height", "100px")
             .attr("class", "tooltip_graph1")
-            .style("background-color", "grey")
-            .style("border-radius", "5px")
-            .style("padding", "10px")
             .style("color", "white")
+            .style("background-color", "#bdc2ca")
+           
 
         var showTooltip = function(d) {
             tooltip
@@ -168,14 +168,16 @@ function bubble_chart() {
 
             tooltip
                 .style("opacity", 1)
-                .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")
+                //.html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")
+                .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>% automobiles</th>" + "<th>% tp</th>" + "<th>% mobilité douce</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.Auto_12_18 + "</td>" + "<td>" + d.Tp_2012_2018 + "</td>" + "<td>" + d.Douce_12_18 + "</td>" + "</tr>" + "</tbody>" + "</table>")
                 .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
 
         var moveTooltip = function(d) {
             tooltip
-                .html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")
+                //.html("concerne : " + d.villes + " et " + d.nbr_auto_1000hab + " automobiles")
+                .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>% automobiles</th>" + "<th>% transports publics</th>" + "<th>% mobilité douce</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.Auto_12_18 + "</td>" + "<td>" + d.Tp_2012_2018 + "</td>" + "<td>" + d.Douce_12_18 + "</td>" + "</tr>" + "</tbody>" + "</table>")
                 .style("left", (d3.mouse(this)[0] + 70) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                 .style("top", (d3.mouse(this)[1]) + "px")
         }
@@ -245,8 +247,8 @@ function bubble_chart() {
             .append("circle")
             .attr("class", function(d) { return "bubbles1 " + d.cat })
             .attr("class", function(d) { return "bubbles2 " + d.cat2 })
-            .attr("cx", function(d) { return x(d.tp_2018); })
-            .attr("cy", function(d) { return y(d.Auto_18); })
+            .attr("cx", function(d) { return x(d.Tp_2012_2018); })
+            .attr("cy", function(d) { return y(d.Auto_12_18); })
             .attr("r", function(d) { return z(d.pop); })
             .style("fill", function(d) { return myColor2(d.villes); })
             //.style("stroke", function(d) { return mycolor_agglo(d.cat2); })
@@ -384,10 +386,10 @@ function bubble_chart() {
             .attr("y", yCircle - 97)
             .text("Nombre d'habitants")
             .attr("text-anchor", "center")
-            .style("font-size", "12px")
+            .style("font-size", "14px")
             .style("fill", colorlegend)
             .style("text-decoration", "italic")
-            .style("letter-spacing", "-0.75px");
+            .style("letter-spacing", "-0.5px");
 
 
         // ---------------------------//

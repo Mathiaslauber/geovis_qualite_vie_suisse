@@ -13,7 +13,7 @@ Tooltip bug
 // set the dimensions and margins of the graph
 
 function clev_dot_plot() {
-    let margin_carto1 = { top: 50, right: 50, bottom: 40, left: 105 },
+    let margin_carto1 = { top: 50, right: 50, bottom: 40, left: 110 },
         width = 650 - margin_carto1.left - margin_carto1.right,
         height = 400 - margin_carto1.top - margin_carto1.bottom;
 
@@ -48,7 +48,7 @@ function clev_dot_plot() {
     //-------------TITRE----------------------//
 
     svg_clev.append("text")
-        .attr("x", margin_carto1.left + 100)
+        .attr("x", margin_carto1.left + 120)
         .attr("y", 0 - 30)
         //.style("class", "h4")
         .attr("text-anchor", "middle")
@@ -65,13 +65,13 @@ function clev_dot_plot() {
 
     //Part des pendulaires utilisant un moyen de transport individuel motoris� (en %)
     svg_clev.append("text")
-        .attr("x", width / 15)
-        .attr("y", margin_carto1.top - 65)
+        .attr("x", margin_carto1.left -110)
+        .attr("y", margin_carto1.top - 60)
         .attr("text-anchor", "left")
         .style("font-size", "13px")
         .style("text-decoration", "bold")
-        .text("* Il est possible d'obtenir des infos en survolant les cercles")
-        .style("fill", "grey")
+        .text("* moyenne des années 2012-2019, infobulles disponibles")
+        .style("fill", colorlegend)
         .style("text-decoration", "italic")
         .style("letter-spacing", "-0.9px");
 
@@ -131,26 +131,24 @@ function clev_dot_plot() {
 
         // Add X axis
         var x = d3.scaleLinear()
-            .domain([0.3, 0.7])
+            .domain([0.1, 0.7])
             .range([0, width]);
         svg_clev.append("g")
             .attr("transform", "translate(0," + height + ")")
+            .attr("class", "axiscolor")
             //.call(d3.axisBottom(x).ticks(3))
-            .call(d3.axisBottom(x).tickValues(["0.4", "0.5", "0.6"]))
+            .call(d3.axisBottom(x).tickValues(["0.2","0.3","0.4", "0.5", "0.6"]).tickSize(0))
             .selectAll("text")
             //.attr("transform", "translate(-10,10)rotate(-45)")
             //.style("text-anchor", "end")
             //.style("font-size", 20)
-            .style("font-family", "Comfortaa")
-            .style("fill", "grey")
-
-        // AXE Y texte Comfortaa
+            .attr("class", "axistick");
 
         svg_clev.append("text")
             .attr("text-anchor", "end")
             .attr("x", width)
             .attr("y", height + 30)
-            .text("Ratio Distance [km] / temps[min] trajet")
+            .text("Ratio Distance [km] / temps[min] trajets")
             .style("font-size", "14px")
             .style("fill", "grey")
             .style("text-decoration", "italic")
@@ -162,13 +160,16 @@ function clev_dot_plot() {
             .domain(data.map(function(d) { return d.villes; }))
             .padding(1);
         svg_clev.append("g")
-            .call(d3.axisLeft(y))
+            .call(d3.axisLeft(y).tickSize(0))
+            .attr("class", "axiscolor")
             .selectAll("text")
             //.attr("transform", "translate(-10,10)rotate(-45)")
             //.style("text-anchor", "end")
             //.style("font-size", 20)
+            .attr("class", "axistick")
             .style("font-family", "Comfortaa")
-            .style("fill", "grey")
+            .style("font-size", "12px")
+            .style("fill", colorlegend);
 
 
         var myColor = d3.scaleOrdinal()
@@ -181,13 +182,14 @@ function clev_dot_plot() {
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip_clev")
-            .style("background-color", "#7fa6b9")
+            .style("background-color", "#bdc2ca")
             .style("border", "solid")
             .style("border-width", "1px")
             .style("border-radius", "5px")
             .style("padding", "10px")
 
-
+           
+           
 
         // A function that change this tooltip when the user hover a point.
         // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
@@ -197,7 +199,8 @@ function clev_dot_plot() {
                 .duration(200)
             tooltip
                 .style("opacity", 1)
-                .html(d.villes + " : La distance moyenne entre 2014 et 2018 est de : " + d.dist_moy_14_19 + " [km] " + " La durée est de : " + d.duree_moy_14_18 + " [min]")
+                //.html("<br>Lieu : " + d.villes +".</br>" + " <br> La distance est de : " +"<br>"+d.dist_moy_14_19 +"</br>" + " [km]</br> " + "<br> La durée est de : " + d.duree_moy_14_18 + " [min]</br>")
+                .html("<table>" + "<thead>" + "<tr>" + "<th>Lieu :</th>" + "<th>distance[km]</th>" + "<th>durée[min]</th>" + "</tr>" + "</thead>" + "<tbody>" + "<tr>" + "<td>" + d.villes + "</td>" + "<td>" + d.dist_moy_14_19 + "</td>" + "<td>" + d.duree_moy_14_18 + "</td>" + "</tr>" + "</tbody>" + "</table>")
                 .style("left", (d3.mouse(this)[0] + 200) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
                 .style("top", (d3.mouse(this)[1]) + "px")
 
@@ -224,7 +227,7 @@ function clev_dot_plot() {
             .enter()
             .append("line")
             .attr("x1", function(d) { return x(d.r2014); })
-            .attr("x2", x(0.3))
+            .attr("x2", x(0.1))
             .attr("y1", function(d) { return y(d.villes); })
             .attr("y2", function(d) { return y(d.villes); })
             //.attr("stroke", function(d) { return myColor(d.villes); })
@@ -242,7 +245,8 @@ function clev_dot_plot() {
             .attr("cx", function(d) { return x(d.r2014); })
             .attr("cy", function(d) { return y(d.villes); })
             .attr("r", "8")
-            .style("fill", "#ffffff")
+            .style("fill", "#2e3237")
+            .style("opacity", "0.9")
             //.style("fill", function(d) { return myColor(d.villes); })
             .on("mouseover", mouseover)
             .on("mousemove", mousemove)

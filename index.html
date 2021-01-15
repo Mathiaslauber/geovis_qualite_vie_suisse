@@ -6,6 +6,7 @@
     <title>000000000000</title>
 
     <link rel="stylesheet" href="style.css">
+    
 
     <!-- Librairie Leaflet; le JS doit être après le CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
@@ -31,51 +32,54 @@
 <body>
     <div class="grid-container">
         <div class="Titre">
-           
+            
             
         </div>
         <div id="rectangle">
+            <img src="images/skyline.png" class="image1" class="w3-hover-sepia">
             <h1>Vivre en ville ? </h1>
             <h2>mobilité et immobilier commme outil décisionnel </h2>
             <h3>8 villes majeures de Suisse </h3> 
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
+            <!--a href="#home" class="headlink">Home</a>
+            <a href="#news" class="headlink">News</a>
+            <a href="#contact" class="headlink">Contact</a-->
+         
+
             </div>
         <div class="graph2" id="graph2">
-            <h4>Etude city statistics</h4>
-            <p>Le projet <a href="#footnote-1">City statistics [1]</a> fournit des informations sur différents aspects de qualité de vie, et ce, en milieu urbain.</p>
+            <h4>Contexte</h4>
+            <p>Le projet suisse <a href="#footnote-1">City statistics [1]</a> fournit des informations sur différents aspects de qualité de vie, et ce, en milieu urbain.</p>
+            <br>            </br>
             <p>Les visualisations présentées ici comprennent des indicateurs relatifs à la <a>mobilité</a> et <a>l'immobilier</a>. Il s'agit de cibler, comparer les villes, leur agglomération, selon ses propres besoins.</p>
+            <br>            </br>
             <p>À noter que le code couleur représentant les villes est constant entre les visualisations, et que les sources sont disponibles en pied de page. Les différents<a href="#footnote-2">Indicateurs [2]</a> sont compris dans la période 2012-2019
             </p>
+            
         </div>
 
 
         <div class="footer">
+   
             <r id="footnote-1">[1] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiques/themes-transversaux/city-statistics.html"> Plus d'informations le site City Statistics de l'OFS</a></r>
             <br>
-            <r id="footnote-2">[2] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiken/querschnittsthemen/city-statistics/indikatoren-lebensqualitaet.html"> Indicateurs City Statistics de l'OFS</a></r>
+            <r id="footnote-2">[2] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiken/querschnittsthemen/city-statistics/indikatoren-lebensqualitaet.html"> Indicateurs City Statistics de l'OFS </a></r>
             <br>
             <r id="footnote-2">[3] Il s'agit d'un ratio distance[km]/temps[min]. Plus le ratio est élevé, plus réseau routier est efficace.</r>
-            <br>
-            <br>
-            <r id="footnote-2">[2] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiken/querschnittsthemen/city-statistics/indikatoren-lebensqualitaet.html"> Indicateurs City Statistics de l'OFS</a></r>
-            <br>
-            <br>
-            <r id="footnote-2">[2] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiken/querschnittsthemen/city-statistics/indikatoren-lebensqualitaet.html"> Indicateurs City Statistics de l'OFS</a></r>
-            <br>
-            <br>
-            <r id="footnote-2">[2] <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiken/querschnittsthemen/city-statistics/indikatoren-lebensqualitaet.html"> Indicateurs City Statistics de l'OFS</a></r>
-            <br>
+            <br>            </br>
+            <p><i class="fas fa-mouse fa-2x"></i> Signifie que l'on peut survoler les graphs pour davantage d'informations
+            </p>
+            <p><i class="fas fa-mouse-pointer fa-2x"></i> Signifie que l'on peut cliquer sur les graphs et obtenir de l'interactivité
+            </p>
         </div>
 
 
 
         <div class="graph3" id="graph3">
+            
             <style>
                 .node:hover {
                     stroke-width: 4px !important;
-                    opacity: 0.9 !important;
+                    opacity: 0.4 !important;
                 }
             </style>
 
@@ -102,11 +106,12 @@
 
             </div>
             <div class="select">
-
+             
                 <section style="float: top">
-                    <select id="selectButton_cleveland"></select>
+                    <select id="selectButton_cleveland" class="myButton"></select>
                 </section>
-
+             <i class="fas fa-mouse-pointer fa-2x"></i>
+           
             </div>
             <div class="tooltip_clev" id="tooltip_clev">
 
@@ -149,7 +154,7 @@
 
 
                 <!--div id="titremap" class="titremap">Comparatif immobilier</div-->
-                <h2>Logements vacants</h2>
+                <h6>Logements vacants</h6>
                 
                 <table>
 
@@ -175,8 +180,8 @@
 
 
                 <div id= "infobox" class="infobox">
-                <h5><i class="fas fa-mouse-pointer fa-2x"></i><i>Infobulle avec résultat détaillé.</i></h5>
-                <h5><i class="fas fa-mouse-pointer fa-2x"></i><i>Emphase des cercles en passant la souris sur la légende.</i></h5>
+                <h5><i class="fas fa-mouse fa-2x"></i></i><i>Infobulle avec résultat détaillé.</i></h5>
+                <h5><i class="fas fa-mouse fa-2x"></i><i>Emphase des cercles en passant la souris sur la légende.</i></h5>
                 </div>
             </div>
         </div>
