@@ -64,18 +64,18 @@ function logement_force_packing() {
             //svg.selectAll(".firstrow").data(color).enter().append("circle").attr("cx", function(d, i) { return 30 + i * 60 }).attr("cy", 50).attr("r", 19).attr("fill", function(d) { return color(d) })
 
             //.range(d3.schemeSet1);
-            // Legend manuelle 
+            // Legend manuelle pour les cercles
 
             //svg_graph3.append("text").attr("x", 5).attr("y", 5).style("font-size", "20px").text("Surface moyenne habitable par personne")
-            svg_graph3.append("circle").attr("cx", 15).attr("cy", 50).attr("r", 40).style("fill", "none").style("stroke", colorlegend)
-            svg_graph3.append("circle").attr("cx", 15).attr("cy", 75).attr("r", 15).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("circle").attr("cx", 15).attr("cy", 60).attr("r", 40).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("circle").attr("cx", 15).attr("cy", 85).attr("r", 15).style("fill", "none").style("stroke", colorlegend)
 
 
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 60).attr("x2", 65).attr("y2", 60).style("fill", "none").style("stroke", colorlegend)
-            svg_graph3.append("line").attr("x1", 15).attr("y1", 10).attr("x2", 65).attr("y2", 10).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 70).attr("x2", 65).attr("y2", 70).style("fill", "none").style("stroke", colorlegend)
+            svg_graph3.append("line").attr("x1", 15).attr("y1", 20).attr("x2", 65).attr("y2", 20).style("fill", "none").style("stroke", colorlegend)
 
-            svg_graph3.append("text").attr("x", 70).attr("y", 60).text("35 m2").style("font-size", "14px").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
-            svg_graph3.append("text").attr("x", 70).attr("y", 10).text("50 m2").style("font-size", "154x").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
+            svg_graph3.append("text").attr("x", 70).attr("y", 70).text("35 m2").style("font-size", "14px").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
+            svg_graph3.append("text").attr("x", 70).attr("y", 20).text("50 m2").style("font-size", "154x").attr("alignment-baseline", "middle").style("letter-spacing", "-0.5px").style("fill", colorlegend)
                 // Size scale for countries
                 //scalePow
                 //More included for completeness, rather than practical usefulness, the power scale interpolates using a power (y = m * x^k + b) function. The exponent k is set using .exponent():
@@ -178,7 +178,7 @@ function logement_force_packing() {
 
             // Features of the forces applied to the nodes:
             // offset permet de réguler le retrait 
-            var offset = 1.8
+            var offset = 1.67
             var simulation = d3.forceSimulation()
                 .force("center", d3.forceCenter().x(width / offset).y(height / offset)) // Attraction to the center of the svg area
                 .force("charge", d3.forceManyBody().strength(.7)) // Nodes are attracted one each other of value is > 0
@@ -227,7 +227,7 @@ function logement_force_packing() {
         .data(allgroups)
         .enter()
         .append("circle")
-        .attr("cx", 200)
+        .attr("cx", 250)
         .attr("cy", function(d, i) { return 12 + i * (size + 5) }) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 12)
         .style("stroke-dasharray", function(d) { return mycolor_dash(d) })
@@ -245,7 +245,7 @@ function logement_force_packing() {
         .data(allgroups)
         .enter()
         .append("text")
-        .attr("x", 200 + size * .8)
+        .attr("x", 250 + size * .8)
         .attr("y", function(d, i) { return 0 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", colorlegend)
         .text(function(d) { return d })
@@ -255,6 +255,23 @@ function logement_force_packing() {
         .style("text-decoration", "italic")
         .style("letter-spacing", "-0.75px");
 
+        svg_graph3
+        .selectAll("myLegend_labels")
+        .data(allgroups)
+        //.data(allgroups)
+        .enter()
+        .append('g')
+        .append('text')
+        .attr('font-family', 'FontAwesome')
+        .attr('font-size', '20px')
+        .text(function(d) { return '\uf8cc' })
+        .attr("x", 190 + size * .8)
+        .attr("y", function(d, i) { return 0 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", colorlegend)
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.75px");
 
 }
 logement_force_packing();

@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 
 function scatter_plot_motor() {
-    let margin_graph1 = { top: 50, right: 15, bottom: 40, left: 60 },
+    let margin_graph1 = { top: 80, right: 15, bottom: 20, left: 30 },
         width = 650 - margin_graph1.left - margin_graph1.right,
         height = 400 - margin_graph1.top - margin_graph1.bottom;
 
@@ -49,7 +49,7 @@ function scatter_plot_motor() {
         //-------TITRAILLE-----//
 
         svg_motor.append("text")
-            .attr("x", margin_graph1.left * 2.5)
+            .attr("x", margin_graph1.left +150 )
             .attr("y", 20 - (margin_graph1.top))
             .attr("text-anchor", "middle")
             .style("font-size", "24px")
@@ -61,8 +61,8 @@ function scatter_plot_motor() {
 
 
         svg_motor.append("text")
-            .attr("x", margin_graph1.left * 2.5 - 15)
-            .attr("y", 15 - (margin_graph1.top / 2))
+            .attr("x", margin_graph1.left + 120)
+            .attr("y", -40)
             .attr("text-anchor", "middle")
             .style("font-size", "14px")
             .style("text-decoration", "italic")
@@ -71,8 +71,8 @@ function scatter_plot_motor() {
 
 
         svg_motor.append("text")
-            .attr("x", "70%")
-            .attr("y", -10)
+            .attr("x", "75%")
+            .attr("y", -30)
             .attr("text-anchor", "left")
             .style("font-size", "12px")
             .style("fill", colorlegend)
@@ -241,10 +241,10 @@ function scatter_plot_motor() {
             .append('g')
             .append('text')
             .attr('font-family', 'FontAwesome')
-            .attr('font-size', function(d) { return d.size+'em'} )
+            .attr('font-size', '22px' )
             .text(function(d) { return '\uf245' })
             .style( "vertical-align","middle")
-            .attr('x', 460)
+            .attr('x', 475)
             .attr('y', function(d, i) { return 10 + i * 40 })
             .attr("height", 30)
             .attr("width", 30)
@@ -262,7 +262,22 @@ function scatter_plot_motor() {
                 d3.selectAll("." + d.name).transition(100).style("opacity", "0")
             })
 
+        //-----------------INFO CLICK---------------------------
 
+        svg_motor.append("text")
+        .attr("x", margin_graph1.left -25)
+        .attr("y", margin_graph1.top - 100)
+        .attr("text-anchor", "left")
+        .style("font-size", "12px")
+        .style("text-decoration", "bold")
+        .text("* Clic pour garder la courbe, double-clic pour la faire disparaître")
+        .style("font-size", "12px")
+        .style("fill", colorlegend)
+        .style("text-decoration", "italic")
+        .style("letter-spacing", "-0.9px");
+
+
+        
         // NOM DES LABELS -----------------------------------------
 
         var myColor = d3.scaleOrdinal()
@@ -279,8 +294,8 @@ function scatter_plot_motor() {
             .data(allgroups)
             .enter()
             .append("text")
-            .attr('x', 500)
-            .attr('y', function(d, i) { return 25 + i * 40 })
+            .attr('x',500)
+            .attr('y', function(d, i) { return 5 + i * 40 })
             //.attr("x", 400 + size * .8)
             //.attr("y", function(d, i) { return i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
             .style("fill", function(d) { return myColor(d) })
@@ -293,6 +308,16 @@ function scatter_plot_motor() {
             .style("font-size", "19px")
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.75px")
+            .on("click", function(d) {
+                // is the element currently visible ?
+                currentOpacity = d3.selectAll("." + d.name).style("opacity")
+                    // Change the opacity: from 0 to 1 or from 1 to 0
+                d3.selectAll("." + d.name).transition(100).style("opacity", currentOpacity == 1 ? 0.2 : 1)
+
+            })
+            .on("dblclick", function(d) {
+                d3.selectAll("." + d.name).transition(100).style("opacity", "0")
+            })
 
         /*
         svg_motor

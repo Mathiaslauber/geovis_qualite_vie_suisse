@@ -68,31 +68,63 @@ r {
 a {
     color: #990000;
     text-decoration: none;
+    
 }
 
 a:hover {
-    text-decoration: underline
+    text-decoration: underline;
+    background: #ddd;
+    color: black;
+      
 }
 
 .Titre {
     grid-area: Titre;
     position: absolute;
     z-index: 2;
+    background-color: #333;
     text-align: center;
-    background-color: #068f96ec;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+  
+
 }
+
+.rectangle a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change background on mouse-over */
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
 #rectangle{
     grid-area: Titre;
     position: relative;
     margin:auto;    
     width:50%;
-    height:170px;
+    height:150px;
     border-radius: 10px;
     background: rgba(154, 168, 182, 0.856);
-    border-color: #ffffffa1;
+    border-color: #ffffff00;
     border-width: 0.15em;
     vertical-align: middle;
-    z-index: 1;
+    z-index: 8;
+    text-align: center;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
 .footer {
     grid-area: footer;
@@ -507,7 +539,7 @@ div.infobox {
 }
 
 
-/*CE QUI NOMME LES CASES*/
+/*CE QUI NOMME LES CASES
 
 .grid-container *:after {
     content: attr(class);
@@ -515,7 +547,7 @@ div.infobox {
     top: 0; 
     left: 0;
 }
-
+*/
 
 
 /*

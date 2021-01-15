@@ -57,8 +57,7 @@ function bubble_chart() {
             .style("text-decoration", "italic")
             .style("letter-spacing", "-0.9px");
 
-
-
+     
         // Add X axis
         var x = d3.scaleLinear()
             .domain([0, 100])
@@ -327,6 +326,7 @@ function bubble_chart() {
         .selectAll("legend")
         .data(valuesToShow)
         .enter()
+        .append('g')
         .append("text")
         .attr('x', xLabel + 5)
         .attr('y', function(d) { return yCircle - size(d) * 2 })
@@ -476,8 +476,26 @@ function bubble_chart() {
             .style("alignment-baseline", "middle")
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight)
-    
 
+              
+        svg_graph1
+            .selectAll("myLegend_labels")
+            .data(allgroups)
+            //.data(allgroups)
+            .enter()
+            .append('g')
+            .append('text')
+            .attr('font-family', 'FontAwesome')
+            .attr('font-size', '20px')
+            .text(function(d) { return '\uf8cc' })
+            .style( "vertical-align","middle")
+            .attr("x", 250 + size * .8)
+            .attr("y", function(d, i) { return 20 + i * (size + 5) + (size / 2) }) // 100 is where the first dot appears. 25 is the distance between dots
+            .style("fill", colorlegend)
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle")
+            .on("mouseover", highlight)
+            .on("mouseleave", noHighlight)
     //-------PARAMETRES DU ZOOM DANS LE GRAPH------//
     // Set the zoom and Pan features: how much you can zoom, on which part, and what to do when there is a zoom
     /*var zoom = d3.zoom()
