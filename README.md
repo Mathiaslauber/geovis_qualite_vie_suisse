@@ -1,7 +1,7 @@
 # Géovisualisation dynamique et traitement de données
 
 Ce projet comporte des visualisations, assemblées en dashboard, permettant de caractériser certains indicateurs de qualité de vie à l'échelle des métropoles suisse.
-
+Il est possible d'accéder à la visualisation, grâce à Github Pages, en cliquant sur ce [lien](https://mathiaslauber.github.io/geovis_qualite_vie_suisse/). 
 
 # Données
 
